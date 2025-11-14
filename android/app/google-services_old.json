@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1063868010383",
+    "project_id": "fako-demo",
+    "storage_bucket": "fako-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063868010383:android:1f0f2b6c1f5de6617fc5fa",
+        "android_client_info": {
+          "package_name": "com.fakodrop.store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgmXk8gWOeglcdCoRTsfj0CYqTgULECXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063868010383:android:36228f11e5b8e86f7fc5fa",
+        "android_client_info": {
+          "package_name": "com.fakodrop.webtinix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgmXk8gWOeglcdCoRTsfj0CYqTgULECXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

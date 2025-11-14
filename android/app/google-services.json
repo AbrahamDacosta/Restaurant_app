@@ -1,0 +1,324 @@
+{
+    "project_info": {
+      "project_number": "1083632633815",
+      "project_id": "fako-drop",
+      "storage_bucket": "fako-drop.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:b73419325fececfe4cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.delivery"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-4u217hkg9r3bhothn0ub0lr4mo39024a.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.delivery",
+              "certificate_hash": "4516209a8a2111d93c70327580a130c901d57360"
+            }
+          },
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:e0f2ba7b9ba3c5b14cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.dropeurs"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-ghk4h22todjf7r1dqbpv96t0gorobj3p.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.dropeurs",
+              "certificate_hash": "4516209a8a2111d93c70327580a130c901d57360"
+            }
+          },
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:374f02bbecbf34004cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.fakoners"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-ibhn248ualedrq72cd46nvqhj0fbosuq.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.fakoners",
+              "certificate_hash": "4516209a8a2111d93c70327580a130c901d57360"
+            }
+          },
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:f4159a180afda2834cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.partners"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-aksmm5lo4vtlu8jtlcoui0u3ufejdatj.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.partners",
+              "certificate_hash": "4516209a8a2111d93c70327580a130c901d57360"
+            }
+          },
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:b200332850f8767d4cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.store"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1083632633815:android:bff1993bec1c0b2d4cad92",
+          "android_client_info": {
+            "package_name": "com.fakodrop.webtinix"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1083632633815-2lqmhfbu7agembll3ktdl3sin5c28u57.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "6160c0baa8b5a4322c0fc10393718e5caa1adb88"
+            }
+          },
+          {
+            "client_id": "1083632633815-3drvqq54g54mfmqrvmipclgrddu77kf6.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "af2aef9441dc239cbb9dc51019feb24258d27394"
+            }
+          },
+          {
+            "client_id": "1083632633815-43bq58k6gfsghaut576tau59t6a3tp3m.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "4516209a8a2111d93c70327580a130c901d57360"
+            }
+          },
+          {
+            "client_id": "1083632633815-k86q0t4at7o830t4oiqvcon7l9l91775.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "87739b22ac61eb70bbc017fc9d9aa64f75dd35e0"
+            }
+          },
+          {
+            "client_id": "1083632633815-npq33p49fbdjubivp1nup51q00puud8t.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "0b7354d7620587edaf20ac1a695ae800674bd99a"
+            }
+          },
+          {
+            "client_id": "1083632633815-o5sg25eo4huo6f160pmq3vveplom72ao.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.fakodrop.webtinix",
+              "certificate_hash": "634a7e73f8fec82b2139d9366920510ba80bf5cb"
+            }
+          },
+          {
+            "client_id": "1083632633815-ko8i80g6nbc3u9tjcva2nrhsuvmineci.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDz29D8ljnk0RP4vbA71MeE-0G4OdlzoBw"
+          },
+          {
+            "current_key": "AIzaSyAc7iCHeAU6_EPpZ8SJ5HU8SDcsJt2fiwg"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1083632633815-99cg5l6h70fmb4pi07uihuejhh439g9u.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "1083632633815-20l3q5aak89fbmtfqm43ct5g9sir53ri.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.fakodropIos"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
