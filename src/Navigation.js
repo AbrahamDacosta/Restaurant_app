@@ -117,7 +117,7 @@ const linking = {
                 name: 'Commande.Details',
                 params: {
                   ...(openerNotification?.data ?? {}),
-                  commandeId: openerNotification.data.reference
+                  commandeId: openerNotification?.data?.reference
                 }
               }
             ]
