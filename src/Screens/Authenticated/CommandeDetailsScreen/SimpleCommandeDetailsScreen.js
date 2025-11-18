@@ -6,6 +6,7 @@ import { CustomText } from '../../../Components/Globals/Texts';
 import { formatDate } from '../../../Utils/Helpers/Parking/ParkingHelper';
 import { PRIMARY_COLOR } from '../../../Theme/Theme';
 import Feather from 'react-native-vector-icons/Feather';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 
 export default function SimpleCommandeDetailsScreen() {
@@ -29,7 +30,7 @@ export default function SimpleCommandeDetailsScreen() {
                 {
                     commandeDetails && <View style={{ marginLeft: 8 }}>
                         <CustomText fontFamily="bold" style={{ color: 'white' }}>#{commandeDetails.reference}</CustomText>
-                        <CustomText style={{ color: 'white', fontSize: 12 }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
+                        <CustomText style={{ color: 'white', fontSize: FontSizes.small }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
                     </View>}
             </View>
             <View style={{ flex: 1 }}>

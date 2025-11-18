@@ -8,6 +8,7 @@ import SearchInput from '../../Components/Utils/SearchInput';
 import ParkingHorizontalList from '../../Components/Parking/ParkingHorizontalList';
 import RecentParkingList from '../../Components/Parking/RecentParkingList';
 import useUser from '../../Hooks/useUser';
+import { FontSizes, moderateScale } from '../../Utils/Helpers/ResponsiveHelper';
 
 export default function HomeScreen(){
 
@@ -23,7 +24,7 @@ export default function HomeScreen(){
                 </View>
                 <View style={{flex: 1, paddingLeft: 8}}>
                     <LargeText fontFamily='bold' style={{}}>Hello, {user.noms}</LargeText>
-                    <LightText style={{fontSize: 18}}>Ou voulez vous garer ?</LightText>
+                    <LightText style={{fontSize: FontSizes.large}}>Ou voulez vous garer ?</LightText>
                 </View>
                 <TouchableOpacity>
                     <Fontisto size={36} name="bell" />

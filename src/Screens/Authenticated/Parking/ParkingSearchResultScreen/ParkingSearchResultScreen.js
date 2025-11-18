@@ -9,6 +9,7 @@ import {FlatList, TouchableOpacity, View} from 'react-native';
 import ImageCard from '../../../../Components/Globals/ImageCard';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import {etageToString} from '../../../../Utils/Helpers/Parking/ParkingHelper';
+import { FontSizes, moderateScale } from '../../../../Utils/Helpers/ResponsiveHelper';
 
 export default function ParkingSearchResultScreen() {
   const route = useRoute();
@@ -59,10 +60,10 @@ function ResultItem({parkingPlace, onPress}) {
           paddingRight: 8,
           justifyContent: 'center',
         }}>
-        <CustomText style={{fontSize: 15}}>
+        <CustomText style={{fontSize: FontSizes.regular}}>
           {etageToString(parkingPlace.etage_number)}
         </CustomText>
-        <LightText style={{fontSize: 15}}>
+        <LightText style={{fontSize: FontSizes.regular}}>
           {parkingPlace.parking_label}
         </LightText>
       </View>

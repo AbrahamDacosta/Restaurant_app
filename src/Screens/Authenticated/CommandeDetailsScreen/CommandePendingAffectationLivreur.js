@@ -6,6 +6,7 @@ import { ORANGE_COLOR } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation } from 'react-query';
 import Daos from '../../../Daos';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 
 export default function CommandePendingAffectationLivreur({commande, reloadCommandeDetailPage}) {
@@ -44,7 +45,7 @@ export default function CommandePendingAffectationLivreur({commande, reloadComma
             <View style={{ flexDirection: 'row' }}>
 
                 <TouchableOpacity onPress={() => { setIsConfirmationOpened("affect-to-rider") }} style={{ backgroundColor: ORANGE_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                    <CustomText fontFamily="bold" style={{ color: 'white', fontSize: 24 }}>Affecter à un livreur</CustomText>
+                    <CustomText fontFamily="bold" style={{ color: 'white', fontSize: moderateScale(24) }}>Affecter à un livreur</CustomText>
                 </TouchableOpacity>
                 {
                     (isAffecting) && (

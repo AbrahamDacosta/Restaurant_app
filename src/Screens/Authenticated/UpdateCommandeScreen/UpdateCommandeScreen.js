@@ -10,6 +10,7 @@ import { AppButton } from '../../../Components/Globals/Butttons';
 import { useMutation } from 'react-query';
 import Daos from '../../../Daos';
 import SoundNotificationPlayer from '../../../Utils/Helpers/SoundNotificationPlayer';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 export default function UpdateCommandeScreen() {
 
@@ -52,7 +53,7 @@ export default function UpdateCommandeScreen() {
                     {
                         commande && <View style={{ marginLeft: 8 }}>
                             <CustomText fontFamily="bold" style={{ color: 'white' }}>#{commande.reference}</CustomText>
-                            <CustomText style={{ color: 'white', fontSize: 12 }}>{formatDate(commande.date_enreg, "DD MMM YYYY")}</CustomText>
+                            <CustomText style={{ color: 'white', fontSize: FontSizes.small }}>{formatDate(commande.date_enreg, "DD MMM YYYY")}</CustomText>
                         </View>}
                 </View>
             </View>
@@ -122,8 +123,8 @@ function CommandeItem({ commandeItem, quantity, canIncreaseQuantity, available, 
             </View>
 
             <View style={{ marginLeft: 12, flex: 1 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: 16 }}>{commandeItem.libelle_fr}</CustomText>
-                <CustomText fontFamily="bold" style={{ fontSize: 16, color: ORANGE_COLOR }}>{commandeItem.prix} FCFA</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium }}>{commandeItem.libelle_fr}</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: ORANGE_COLOR }}>{commandeItem.prix} FCFA</CustomText>
 
                 {
                     commandeItem.item_options != undefined && commandeItem.item_options.length > 0 && (
@@ -135,7 +136,7 @@ function CommandeItem({ commandeItem, quantity, canIncreaseQuantity, available, 
                         item => !!item.libelle && !!item.prix
                     ).map(
                         item => (
-                            <CustomText style={{ color: 'gray', fontSize: 12, marginVertical: 2 }}>{item.libelle} ( {item.prix} FCFA )</CustomText>
+                            <CustomText style={{ color: 'gray', fontSize: FontSizes.small, marginVertical: 2 }}>{item.libelle} ( {item.prix} FCFA )</CustomText>
                         )
                     )
                 }
@@ -153,7 +154,7 @@ function CommandeItem({ commandeItem, quantity, canIncreaseQuantity, available, 
                         <FontAwesome color="#ff966f" name="minus" size={24} />
                     </TouchableOpacity>
 
-                    <CustomText fontFamily="bold" style={{ fontSize: 24, color: PRIMARY_COLOR }}>{quantity}</CustomText>
+                    <CustomText fontFamily="bold" style={{ fontSize: moderateScale(24), color: PRIMARY_COLOR }}>{quantity}</CustomText>
 
                     <TouchableOpacity
                         disabled={!canIncreaseQuantity}

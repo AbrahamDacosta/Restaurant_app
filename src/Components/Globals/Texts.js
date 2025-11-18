@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import { LIGHT_DARK } from '../../Theme/Theme';
+import { FontSizes } from '../../Utils/Helpers/ResponsiveHelper';
 
 const Style = StyleSheet.create({
   normal: {fontFamily: 'Montserrat-Light'},
@@ -40,7 +41,7 @@ export function CustomText({children, ...props}) {
 
 export function TitleText({children, ...props}) {
   return (
-    <CustomText {...props} style={{fontSize: 29, fontWeight: '100', ...props.style}}>
+    <CustomText {...props} style={{fontSize: FontSizes.title, fontWeight: '100', ...props.style}}>
       {children}
     </CustomText>
   );
@@ -48,7 +49,31 @@ export function TitleText({children, ...props}) {
 
 export function LargeText({children, ...props}) {
   return (
-    <CustomText {...props} style={{fontSize: 20, ...props.style}}>
+    <CustomText {...props} style={{fontSize: FontSizes.large, ...props.style}}>
+      {children}
+    </CustomText>
+  );
+}
+
+export function MediumText({children, ...props}) {
+  return (
+    <CustomText {...props} style={{fontSize: FontSizes.medium, ...props.style}}>
+      {children}
+    </CustomText>
+  );
+}
+
+export function RegularText({children, ...props}) {
+  return (
+    <CustomText {...props} style={{fontSize: FontSizes.regular, ...props.style}}>
+      {children}
+    </CustomText>
+  );
+}
+
+export function SmallText({children, ...props}) {
+  return (
+    <CustomText {...props} style={{fontSize: FontSizes.small, ...props.style}}>
       {children}
     </CustomText>
   );
@@ -60,6 +85,7 @@ export function LightText({children, ...props}) {
       {...props}
       style={{
         color: '#b4b3b3',
+        fontSize: FontSizes.regular,
         ...props.style,
       }}>
       {children}

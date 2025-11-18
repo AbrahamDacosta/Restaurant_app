@@ -4,6 +4,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import { ORANGE_COLOR, PRIMARY_COLOR } from '../../Theme/Theme';
 import { CustomText } from '../Globals/Texts';
 import { formatDate } from '../../Utils/Helpers/Parking/ParkingHelper';
+import { FontSizes } from '../../Utils/Helpers/ResponsiveHelper';
 
 export default function CommandeItem({ commande, style, onPress, ...otherProps }) {
 
@@ -26,7 +27,7 @@ export default function CommandeItem({ commande, style, onPress, ...otherProps }
                     {
                        commande.etat == "0" && commande.old_order_amount != undefined && parseInt(commande.old_order_amount) != 0 && (
                             <View style={{ backgroundColor: '#ffcdcd', color: 'red', alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                                <CustomText fontFamily="bold" style={{ fontSize: 10 }}>En attente de l'acceptation du clients</CustomText>
+                                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.tiny }}>En attente de l'acceptation du clients</CustomText>
                             </View>
                         )
                     }

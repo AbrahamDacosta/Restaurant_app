@@ -23,6 +23,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import DatePicker from 'react-native-date-picker';
 import Modal from "react-native-modal";
 import { AppButton } from '../../../Components/Globals/Butttons';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
@@ -129,7 +130,7 @@ export default function CommandeTabScreen() {
                         indicatorStyle={{ backgroundColor: 'white' }}
                         style={{ backgroundColor: PRIMARY_COLOR }}
                         renderLabel={({ route, focused, color }) => (
-                            <CustomText fontFamily="bold" style={{ color, fontSize: 12 }}>
+                            <CustomText fontFamily="bold" style={{ color, fontSize: FontSizes.small }}>
                                 {route.title}
                             </CustomText>
                         )}
@@ -409,7 +410,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
         <View style={{ backgroundColor: PRIMARY_COLOR_DARK }} >
 
             <View style={{ padding: 16 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: 18 }}>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large }}>
                     {
                         pickerMode == "date-start" ? "Selectionnez la date de départ" : "Selectionnez la date de fin"
                     }
@@ -421,7 +422,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                     setPickerMode('date-start')
                 }} style={{ flex: 1 }}>
                     <CustomText fontFamily="bold" style={{ color: 'white' }}>Du</CustomText>
-                    <CustomText fontFamily={pickerMode == "date-start" ? "bold" : undefined} style={{ fontSize: 24, }}>
+                    <CustomText fontFamily={pickerMode == "date-start" ? "bold" : undefined} style={{ fontSize: moderateScale(24), }}>
                         {
                             !!startDate ? moment(startDate).format("DD/MM/YYYY") : "-"
                         }
@@ -431,7 +432,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                     setPickerMode('date-end')
                 }} style={{ flex: 1 }}>
                     <CustomText fontFamily="bold" style={{ color: 'white' }}>Au</CustomText>
-                    <CustomText fontFamily={pickerMode == "date-end" ? "bold" : undefined} style={{ fontSize: 24, }}>
+                    <CustomText fontFamily={pickerMode == "date-end" ? "bold" : undefined} style={{ fontSize: moderateScale(24), }}>
                         {
                             !!endDate ? moment(endDate).format("DD/MM/YYYY") : "-"
                         }
