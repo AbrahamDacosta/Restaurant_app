@@ -17,6 +17,7 @@ import { firebase } from '@react-native-firebase/messaging';
 import useAppFocusedEffect from '../../../Hooks/useAppFocusedEffect';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 export default function CommandeDetailsScreen() {
 
@@ -76,7 +77,7 @@ export default function CommandeDetailsScreen() {
                 {
                     commandeDetails && <View style={{ marginLeft: 8 }}>
                         <CustomText fontFamily="bold" style={{ color: 'white' }}>#{commandeId}</CustomText>
-                        <CustomText style={{ color: 'white', fontSize: 12 }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
+                        <CustomText style={{ color: 'white', fontSize: FontSizes.small }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
                     </View>}
             </View>
             <View style={{ flex: 1 }}>
@@ -109,10 +110,10 @@ export default function CommandeDetailsScreen() {
 
                             }} style={{  borderRadius: 4, borderColor: ORANGE_COLOR, paddingVertical: 8, borderRadius: 8, flexDirection: 'row', alignItems: 'center', }}>
                                 <Image source={require("assets/images/couverts.png")} style={{ tintColor: PRIMARY_COLOR, height: 32, width: 32, resizeMode: 'contain', marginRight: 8 }} />
-                                <CustomText fontFamily="bold" style={{ color: PRIMARY_COLOR, flex: 1, fontSize: 18 }}>Couvert demandé</CustomText>
+                                <CustomText fontFamily="bold" style={{ color: PRIMARY_COLOR, flex: 1, fontSize: FontSizes.large }}>Couvert demandé</CustomText>
                             </View>
 
-                            <CustomText fontFamily="bold" style={{ marginLeft: 42,  fontSize: 24, color: commandeDetails.need_ustensile == '1' ? 'green' : 'red' }}>{commandeDetails.need_ustensile == '1' ? "Oui" : "Non"}</CustomText>
+                            <CustomText fontFamily="bold" style={{ marginLeft: 42,  fontSize: moderateScale(24), color: commandeDetails.need_ustensile == '1' ? 'green' : 'red' }}>{commandeDetails.need_ustensile == '1' ? "Oui" : "Non"}</CustomText>
 
                         </View>
 
@@ -127,9 +128,9 @@ export default function CommandeDetailsScreen() {
 
                             }} style={{ borderRadius: 4, borderColor: ORANGE_COLOR, borderRadius: 8, flexDirection: 'row', alignItems: 'center', }}>
                                 <MaterialCommunityIcons name="cash" color={"#85BB65"} size={42} />
-                                <CustomText fontFamily="bold" style={{ color: "#85BB65", flex: 1, fontSize: 18 }}>Cash Disponible</CustomText>
+                                <CustomText fontFamily="bold" style={{ color: "#85BB65", flex: 1, fontSize: FontSizes.large }}>Cash Disponible</CustomText>
                             </View>
-                            <CustomText fontFamily="bold" style={{ marginLeft: 42, marginTop: -14, fontSize: 24, color: ORANGE_COLOR }}>{commandeDetails.cash_amount} FCFA</CustomText>
+                            <CustomText fontFamily="bold" style={{ marginLeft: 42, marginTop: -14, fontSize: moderateScale(24), color: ORANGE_COLOR }}>{commandeDetails.cash_amount} FCFA</CustomText>
                         </View>
                     )
                 } */}
@@ -138,8 +139,8 @@ export default function CommandeDetailsScreen() {
                 {
                     commandeDetails != undefined && commandeDetails.paiement_methode != "161" && (
                         <View style={{ flexDirection: 'row', paddingHorizontal: 16 }}>
-                            <CustomText fontFamily="bold" style={{ fontSize: 16, color: PRIMARY_COLOR }}>{commandeDetails.responsable_frais?.toUpperCase()}</CustomText>
-                            <CustomText fontFamily="bold" style={{ fontSize: 16, marginLeft: 8, color: "green" }}>La facture de la commande a déja été payé</CustomText>
+                            <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: PRIMARY_COLOR }}>{commandeDetails.responsable_frais?.toUpperCase()}</CustomText>
+                            <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, marginLeft: 8, color: "green" }}>La facture de la commande a déja été payé</CustomText>
                             <Ionicons name="checkmark-done" color="green" size={24} />
                         </View>
                     )

@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
 import TodayCourseCount from '../../../Components/CurrentUser/TodayCourseCount';
 import MoyenneEvaluation from '../../../Components/CurrentUser/MoyenneEvaluation';
+import { FontSizes } from '../../../Utils/Helpers/ResponsiveHelper';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 
@@ -18,7 +19,7 @@ export default function HomeScreen(props) {
             <StatusBar backgroundColor={PRIMARY_COLOR} />
             <HomeScreenHeader />
             <View style={{ backgroundColor: 'white', paddingVertical: 24, alignItems: 'center' }}>
-                <CustomText fontFamily="bold" style={{ fontSize: 16, marginBottom: 16 }}>Aujourd'hui</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, marginBottom: 16 }}>Aujourd'hui</CustomText>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 

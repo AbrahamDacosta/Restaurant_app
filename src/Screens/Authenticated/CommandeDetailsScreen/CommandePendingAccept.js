@@ -9,8 +9,9 @@ import Daos from '../../../Daos';
 import CheckBox from '@react-native-community/checkbox';
 import { AppButton } from '../../../Components/Globals/Butttons';
 import { useNavigation } from '@react-navigation/native';
-import Feather from 'react-native-vector-icons/Feather'
+import Feather from 'react-native-vector-icons/Feather';
 import SoundNotificationPlayer from '../../../Utils/Helpers/SoundNotificationPlayer';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 export default function CommandePendingAccept({ reloadCommandeDetailPage, commande }) {
     // console.log("commande =====", commande);
@@ -107,13 +108,13 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                                 'UpdateCommandeScreen', { commande }
                             );
                         }} style={{ alignItems: 'center', backgroundColor: 'red', flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: 14 }}>ACCEPTER PARTIELLEMENT</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.regular }}>ACCEPTER PARTIELLEMENT</CustomText>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { setIsCancelReasonOpened(true) }} style={{ alignItems: 'center', backgroundColor: ORANGE_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: 20 }}>Décliner</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.large }}>Décliner</CustomText>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { setIsConfirmationOpened("confirm-acceptation") }} style={{ alignItems: 'center', backgroundColor: PRIMARY_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: 20 }}>Accepter</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.large }}>Accepter</CustomText>
                         </TouchableOpacity>
                         {
                             (isAccepting || isDeclining) && (
@@ -147,7 +148,7 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                     // onDismiss()
                 }}>
                 <View style={{ backgroundColor: 'white', borderRadius: 4, padding: 16, paddingHorizontal: 24, marginHorizontal: 16, marginTop: 24, flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ fontSize: 18 }}>Pourquoi souhaitez-vous réfuser la commande ?</CustomText>
+                    <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large }}>Pourquoi souhaitez-vous réfuser la commande ?</CustomText>
 
                     {
                         isLoadingCancelReasons && <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>

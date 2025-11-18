@@ -11,9 +11,10 @@ import { getImageUrl } from '../../../Utils/Helpers/Parking/ParkingHelper';
 import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { useNavigation } from '@react-navigation/native';
-import Feather from 'react-native-vector-icons/Feather'
-import Fontisto from 'react-native-vector-icons/Fontisto'
+import Feather from 'react-native-vector-icons/Feather';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import { AppInput } from '../../../Components/Globals/Inputs';
+import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 
@@ -128,11 +129,11 @@ function ProductItem({ product, statut }) {
             </View>
 
             <View style={{ marginLeft: 12, flex: 1 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: 16 }}>{product.libelle_fr}</CustomText>
-                <CustomText fontFamily="bold" style={{ fontSize: 16, color: ORANGE_COLOR, textDecorationLine: product.prix_promo != null ? 'line-through' : undefined, }}>{product.prix} FCFA</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium }}>{product.libelle_fr}</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: ORANGE_COLOR, textDecorationLine: product.prix_promo != null ? 'line-through' : undefined, }}>{product.prix} FCFA</CustomText>
                 {
                     !!product.prix_promo && (
-                        <CustomText fontFamily="bold" style={{ fontSize: 16, color: ORANGE_COLOR }}>PROMO: {product.prix_promo} FCFA</CustomText>
+                        <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: ORANGE_COLOR }}>PROMO: {product.prix_promo} FCFA</CustomText>
                     )
                 }
 
