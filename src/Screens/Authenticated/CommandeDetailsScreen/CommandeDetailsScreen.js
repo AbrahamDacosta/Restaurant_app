@@ -185,7 +185,9 @@ export default function CommandeDetailsScreen() {
 
                 {
                     (!isLoading && !isRefetching) && ["6", "5"].includes(commandeDetails.etat) && (
-                        <SimpleCommandeResume commande={commandeDetails} />
+                        <SimpleCommandeResume reloadCommandeDetailPage={() => {
+                            refetch();
+                        }} commande={commandeDetails} />
                     )
                 }
 
