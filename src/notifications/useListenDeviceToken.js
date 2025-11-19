@@ -37,14 +37,14 @@ export default function useListenDeviceToken() {
         messaging()
             .getToken()
             .then(token => {
-                console.log("device token", {token, userId: user.id});
-                if (user.id != null) {
+                console.log("device token", {token, userId: user?.id});
+                if (user?.id != null) {
                     mutation.mutate({token, userId: user.id})
                 }
             });
 
         return messaging().onTokenRefresh(token => {
-            if (user != null) {
+            if (user?.id != null) {
                 mutation.mutate({token, userId: user.id})
             }
         });
