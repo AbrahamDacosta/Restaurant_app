@@ -7,13 +7,24 @@ import { formatDate } from '../../../Utils/Helpers/Parking/ParkingHelper';
 import { PRIMARY_COLOR } from '../../../Theme/Theme';
 import Feather from 'react-native-vector-icons/Feather';
 import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
+import { useQuery } from 'react-query';
+import Daos from '../../../Daos';
 
 
 export default function SimpleCommandeDetailsScreen() {
 
     const route = useRoute();
-    const { commande: commandeDetails } = route.params;
+    const { commande } = route.params;
     const navigator = useNavigation();
+
+    // Fetch fresh data with refetch capability
+    const { data: commandeDetails, refetch } = useQuery({
+        queryKey: ['simpleCommandeDetails', commande?.reference],
+        queryFn: () => Daos.Commandes.getOrderDetails(commande?.reference),
+        initialData: commande,
+        enabled: !!commande?.reference,
+        cacheTime: 0
+    });
 
     return (
         <View style={{flex: 1}}>
@@ -34,7 +45,9 @@ export default function SimpleCommandeDetailsScreen() {
                     </View>}
             </View>
             <View style={{ flex: 1 }}>
-                <SimpleCommandeResume commande={commandeDetails} />
+                <SimpleCommandeResume reloadCommandeDetailPage={() => {
+                    refetch();
+                }} commande={commandeDetails} />
             </View>
         </View>
     )
