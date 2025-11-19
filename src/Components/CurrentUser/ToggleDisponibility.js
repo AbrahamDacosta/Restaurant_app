@@ -47,7 +47,7 @@ export default function ToggleDisponibility() {
                 !isLoading && currentUser != undefined && (
                     <ToggleSwitch
                         disabled={isLoading}
-                        isOn={currentUseesr.accept_order == 1}
+                        isOn={currentUser.accept_order == 1}
                         onColor="green"
                         offColor="red"
 
