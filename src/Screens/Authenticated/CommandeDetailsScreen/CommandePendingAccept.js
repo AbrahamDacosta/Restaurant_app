@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Alert, Modal, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomText } from '../../../Components/Globals/Texts';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
-import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation, useQuery } from 'react-query';
 import Daos from '../../../Daos';
@@ -95,8 +95,8 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                     </View>
                 )
             }
-            <View style={{ backgroundColor: 'white', padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
-                <CustomText fontFamily="bold" style={{ color: 'gray' }}>Montant total</CustomText>
+            <View style={{ backgroundColor: CARD_BACKGROUND, padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Montant total</CustomText>
                 <CustomText fontFamily="bold" style={{ color: ORANGE_COLOR }}>{commande.order_amount} FR</CustomText>
             </View>
 
@@ -108,13 +108,13 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                                 'UpdateCommandeScreen', { commande }
                             );
                         }} style={{ alignItems: 'center', backgroundColor: 'red', flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.regular }}>ACCEPTER PARTIELLEMENT</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: TEXT_WHITE, fontSize: FontSizes.regular }}>ACCEPTER PARTIELLEMENT</CustomText>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { setIsCancelReasonOpened(true) }} style={{ alignItems: 'center', backgroundColor: ORANGE_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.large }}>Décliner</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: TEXT_WHITE, fontSize: FontSizes.large }}>Décliner</CustomText>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { setIsConfirmationOpened("confirm-acceptation") }} style={{ alignItems: 'center', backgroundColor: PRIMARY_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white', fontSize: FontSizes.large }}>Accepter</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: TEXT_WHITE, fontSize: FontSizes.large }}>Accepter</CustomText>
                         </TouchableOpacity>
                         {
                             (isAccepting || isDeclining) && (
@@ -147,8 +147,8 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                 onRequestClose={() => {
                     // onDismiss()
                 }}>
-                <View style={{ backgroundColor: 'white', borderRadius: 4, padding: 16, paddingHorizontal: 24, marginHorizontal: 16, marginTop: 24, flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large }}>Pourquoi souhaitez-vous réfuser la commande ?</CustomText>
+                <View style={{ backgroundColor: CARD_BACKGROUND, borderRadius: 4, padding: 16, paddingHorizontal: 24, marginHorizontal: 16, marginTop: 24, flex: 1 }}>
+                    <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large, color: TEXT_WHITE }}>Pourquoi souhaitez-vous réfuser la commande ?</CustomText>
 
                     {
                         isLoadingCancelReasons && <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
@@ -159,7 +159,7 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                     {
                         !isLoadingCancelReasons && cancelReasons && (
                             <View style={{ flex: 1 }}>
-                                <CustomText style={{ marginBottom: 16 }}>Selectionnez une des raisons lister ci-dessous pour indiquer la raison du refus de la commande</CustomText>
+                                <CustomText style={{ marginBottom: 16, color: TEXT_GRAY }}>Selectionnez une des raisons lister ci-dessous pour indiquer la raison du refus de la commande</CustomText>
 
                                 {
                                     cancelReasons.map(
@@ -172,7 +172,7 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
 
                                             }} style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 8 }}>
                                                 <CheckBox size={100} value={item.libelle_fr == selectedCancelReason?.libelle_fr} />
-                                                <CustomText fontWeight='bold'>{item.libelle_fr}</CustomText>
+                                                <CustomText fontWeight='bold' style={{ color: TEXT_WHITE }}>{item.libelle_fr}</CustomText>
                                             </TouchableOpacity>
                                         )
                                     )

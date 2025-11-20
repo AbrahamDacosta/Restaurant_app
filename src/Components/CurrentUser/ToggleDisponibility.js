@@ -9,7 +9,7 @@ import Daos from '../../Daos';
 import LinearGradient from 'react-native-linear-gradient';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
 import { useSelector } from 'react-redux';
-import { PRIMARY_COLOR } from '../../Theme/Theme';
+import { PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE } from '../../Theme/Theme';
 
 export default function ToggleDisponibility() {
 
@@ -37,9 +37,9 @@ export default function ToggleDisponibility() {
     console.log("current user", currentUser, token, fetchCurrentUserError)
 
     return (
-        <View style={{ backgroundColor: '#e8e8e8', paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <View style={{ backgroundColor: CARD_BACKGROUND, paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
-            <CustomText fontFamily="bold" style={{ color: PRIMARY_COLOR }}>Accepte les commandes</CustomText>
+            <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>Accepte les commandes</CustomText>
 
             {
                 !isLoading && currentUser != undefined && (

@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomText } from '../Globals/Texts';
 import { Image, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { ORANGE_COLOR } from '../../Theme/Theme';
+import { ORANGE_COLOR, CARD_BACKGROUND, TEXT_GRAY } from '../../Theme/Theme';
 import { getImageUrl } from '../../Utils/Helpers/Parking/ParkingHelper';
 
 
@@ -21,7 +21,7 @@ export default function CommandeContentList({ items, oldItems, hasBeenUpdated, c
                 {
                     commandeDetails && !!commandeDetails.infos_supplementaires && (
                         <View style={{  paddingHorizontal: 16, paddingVertical: 8 }}>
-                            <CustomText fontFamily="semi" style={{ fontSize: 14, color: 'gray' }}>Information(s) supplémentaire(s)</CustomText>
+                            <CustomText fontFamily="semi" style={{ fontSize: 14, color: TEXT_GRAY }}>Information(s) supplémentaire(s)</CustomText>
                             <CustomText fontFamily="bold" style={{ color: 'red' }}>{commandeDetails.infos_supplementaires}</CustomText>
                         </View>
                     )
@@ -51,9 +51,9 @@ export default function CommandeContentList({ items, oldItems, hasBeenUpdated, c
 function CommandeItem({ commandeItem, oldCommandeItem, hasBeenUpdated }) {
 
     return (
-        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: 'white', flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center' }}>
+        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: CARD_BACKGROUND, flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center' }}>
 
-            <View style={{ backgroundColor: 'white', elevation: 8, borderRadius: 8 }}>
+            <View style={{ backgroundColor: CARD_BACKGROUND, elevation: 8, borderRadius: 8 }}>
                 <Image style={{ height: 72, width: 72, resizeMode: 'contain' }} source={{ uri: getImageUrl(commandeItem.image) }} />
             </View>
 
