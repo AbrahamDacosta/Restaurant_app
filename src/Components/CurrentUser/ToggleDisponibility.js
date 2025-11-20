@@ -16,7 +16,28 @@ export default function ToggleDisponibility() {
     const token = useSelector(state => state.ApplicationStore.token);
     const user = useUser();
 
-    const { data: currentUser, isFetching, fetchCurrentUserError, refetch } = useQuery({ queryKey: ['getUser'], queryFn: () => Daos.Auth.getUserInfo(token.token), })
+    console.log("ToggleDisponibility - token:", token, "user:", user);
+
+    const { data: currentUser, isFetching, error: fetchCurrentUserError, refetch } = useQuery({
+        queryKey: ['getUser'],
+        queryFn: () => {
+            if (!token || !token.token) {
+                console.log("ToggleDisponibility - No token available");
+                throw new Error("No token available");
+            }
+            console.log("ToggleDisponibility - Fetching user info with token:", token.token);
+            return Daos.Auth.getUserInfo(token.token);
+        },
+        retry: 3,
+        retryDelay: 1000,
+        enabled: !!token && !!token.token,
+        onError: (error) => {
+            console.log("ToggleDisponibility - Error fetching user:", error);
+        },
+        onSuccess: (data) => {
+            console.log("ToggleDisponibility - User fetched successfully:", data);
+        }
+    })
 
     const { data: mutationResult, mutate: toggle, isLoading } = useMutation({
         mutationKey: 'toggleDisponibility', mutationFn: () => Daos.User.toggleOrderAcceptance(user.id), onSuccess(data) {
@@ -34,7 +55,17 @@ export default function ToggleDisponibility() {
     if (isFetching)
         return <ShimmerPlaceHolder LinearGradient={LinearGradient} height={45} width={128} style={{ marginTop: 8 }} />
 
-    console.log("current user", currentUser, token, fetchCurrentUserError)
+    console.log("ToggleDisponibility - current user:", currentUser, "token:", token, "error:", fetchCurrentUserError)
+
+    // If there's an error and no current user, show error state
+    if (fetchCurrentUserError && !currentUser) {
+        console.log("ToggleDisponibility - Rendering error state");
+        return (
+            <View style={{ backgroundColor: CARD_BACKGROUND, paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>Erreur de chargement</CustomText>
+            </View>
+        );
+    }
 
     return (
         <View style={{ backgroundColor: CARD_BACKGROUND, paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

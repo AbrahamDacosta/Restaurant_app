@@ -179,7 +179,7 @@ const useCommandeStoreForTabScreen = create(
             loadCommandes: async (type, page, id_store, startDate, endDate) => {
                 set(state => { state[type].isLoading = true; state[type].loadingError = undefined; });
                 try {
-
+                    console.log(`loadCommandes - type: ${type}, page: ${page}, id_store: ${id_store}`);
                     console.log("=======>" + moment(startDate).format('YYYY-MM-DD') + "<=======")
 
                     if (startDate != undefined)
@@ -188,27 +188,36 @@ const useCommandeStoreForTabScreen = create(
                     if (endDate != undefined)
                         endDate = moment(endDate).format('YYYY-MM-DD');
 
+                    console.log(`loadCommandes - Fetching with states: ${getCommandeStatesByType(type)}, startDate: ${startDate}, endDate: ${endDate}`);
+
                     const getResult = await Daos.Commandes.getCommandeByType({ states: getCommandeStatesByType(type), page, id_store, startDate, endDate },);
+
+                    console.log(`loadCommandes - Result for ${type}:`, getResult);
 
                     if (page == 1) {
                         set((state) => {
                             state[type].paginationState = getResult;
-                            state[type].items = getResult.datas;
+                            state[type].items = getResult.datas || [];
                         });
                     }
                     else {
 
                         set((state) => {
                             state[type].paginationState = getResult;
-                            if (state[type].items != null)
-                                state[type].items.push(getResult.datas);
+                            if (state[type].items != null && Array.isArray(getResult.datas)) {
+                                // Spread the array items instead of pushing the entire array
+                                state[type].items = [...state[type].items, ...getResult.datas];
+                            }
                             else
-                                state[type].items = getResult.datas;
+                                state[type].items = getResult.datas || [];
                         });
                     }
 
+                    console.log(`loadCommandes - Success for ${type}, items count: ${getResult.datas?.length || 0}`);
+
                 } catch (e) {
-                    console.log("Fetch error", e);
+                    console.log(`loadCommandes - Fetch error for ${type}:`, e);
+                    console.log(`loadCommandes - Error details:`, e.message, e.response?.data, e.response?.status);
                     set(state => { state[type].loadingError = e });
                 } finally {
                     // console.log("Fetch finished");
@@ -270,8 +279,19 @@ function CommandesScreen({ type }) {
 
             {!isLoading && !!loadingError &&
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 }}>
-                    <CustomText style={{ alignItems: 'center', textAlign: 'center' }}>Une erreur est survenue lors de l'obtention des éléments</CustomText>
+                    <CustomText style={{ alignItems: 'center', textAlign: 'center', marginBottom: 8 }}>Une erreur est survenue lors de l'obtention des éléments</CustomText>
+                    {loadingError?.message && (
+                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: '#666' }}>
+                            {loadingError.message}
+                        </CustomText>
+                    )}
+                    {loadingError?.response?.data?.error && (
+                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: '#666' }}>
+                            {loadingError.response.data.error}
+                        </CustomText>
+                    )}
                     <AppButton onPress={() => {
+                        console.log(`Retrying to load ${type} commandes`);
                         loadCommandes(type, 1, store.id, filters.startDate, filters.endDate);
                     }} style={{ padding: 4, paddingHorizontal: 8, marginTop: 8, }}>Tappez pour réessayer</AppButton>
                 </View>
