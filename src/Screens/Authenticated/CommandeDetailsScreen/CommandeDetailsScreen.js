@@ -5,7 +5,7 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import { useQuery } from 'react-query';
 import Daos from '../../../Daos';
 import Feather from 'react-native-vector-icons/Feather';
-import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, PRIMARY_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE } from '../../../Theme/Theme';
 import CommandeDetailsShimmer from './CommandeDetailsShimmer';
 import CommandePendingAccept from './CommandePendingAccept';
 import CommandePendingAffectationLivreur from './CommandePendingAffectationLivreur';
@@ -63,21 +63,21 @@ export default function CommandeDetailsScreen() {
 
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
             <View style={{ backgroundColor: PRIMARY_COLOR, flexDirection: 'row', paddingHorizontal: 8, paddingVertical: 12, alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => { navigator.goBack() }}>
-                    <Feather name="chevron-left" color="white" size={32} />
+                    <Feather name="chevron-left" color={TEXT_WHITE} size={32} />
                 </TouchableOpacity>
                 <View>
-                    <View style={{ padding: 8, borderWidth: 2, borderColor: 'white', borderRadius: 50 }}>
-                        <Feather name="box" color="white" size={20} />
+                    <View style={{ padding: 8, borderWidth: 2, borderColor: TEXT_WHITE, borderRadius: 50 }}>
+                        <Feather name="box" color={TEXT_WHITE} size={20} />
                     </View>
                 </View>
 
                 {
                     commandeDetails && <View style={{ marginLeft: 8 }}>
-                        <CustomText fontFamily="bold" style={{ color: 'white' }}>#{commandeId}</CustomText>
-                        <CustomText style={{ color: 'white', fontSize: FontSizes.small }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
+                        <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>#{commandeId}</CustomText>
+                        <CustomText style={{ color: TEXT_WHITE, fontSize: FontSizes.small }}>{formatDate(commandeDetails.date_enreg, "DD MMM YYYY")}</CustomText>
                     </View>}
             </View>
             <View style={{ flex: 1 }}>
@@ -104,13 +104,13 @@ export default function CommandeDetailsScreen() {
                 {
                     commandeDetails != undefined && (["0", "1", "4", "5", "6"].includes(commandeDetails.etat)) &&  (
 
-                        <View style={{ marginVertical: 8, paddingHorizontal: 16, marginVertical: 8, backgroundColor: 'white', }}>
+                        <View style={{ marginVertical: 8, paddingHorizontal: 16, marginVertical: 8, backgroundColor: CARD_BACKGROUND, }}>
 
                             <View onPress={() => {
 
                             }} style={{  borderRadius: 4, borderColor: ORANGE_COLOR, paddingVertical: 8, borderRadius: 8, flexDirection: 'row', alignItems: 'center', }}>
                                 <Image source={require("assets/images/couverts.png")} style={{ tintColor: PRIMARY_COLOR, height: 32, width: 32, resizeMode: 'contain', marginRight: 8 }} />
-                                <CustomText fontFamily="bold" style={{ color: PRIMARY_COLOR, flex: 1, fontSize: FontSizes.large }}>Couvert demandé</CustomText>
+                                <CustomText fontFamily="bold" style={{ color: TEXT_WHITE, flex: 1, fontSize: FontSizes.large }}>Couvert demandé</CustomText>
                             </View>
 
                             <CustomText fontFamily="bold" style={{ marginLeft: 42,  fontSize: moderateScale(24), color: commandeDetails.need_ustensile == '1' ? 'green' : 'red' }}>{commandeDetails.need_ustensile == '1' ? "Oui" : "Non"}</CustomText>

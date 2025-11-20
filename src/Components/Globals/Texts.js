@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
-import { LIGHT_DARK } from '../../Theme/Theme';
+import { LIGHT_DARK, TEXT_GRAY, TEXT_WHITE } from '../../Theme/Theme';
 import { FontSizes } from '../../Utils/Helpers/ResponsiveHelper';
 
 const Style = StyleSheet.create({
@@ -84,7 +84,7 @@ export function LightText({children, ...props}) {
     <CustomText
       {...props}
       style={{
-        color: '#b4b3b3',
+        color: TEXT_GRAY,
         fontSize: FontSizes.regular,
         ...props.style,
       }}>

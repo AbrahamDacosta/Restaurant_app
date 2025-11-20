@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, ActivityIndicator} from 'react-native';
 import {CustomText, LargeText} from './Texts';
-import {PRIMARY_COLOR} from '../../Theme/Theme';
+import {PRIMARY_COLOR, TEXT_WHITE, BACKGROUND_DARK} from '../../Theme/Theme';
 
 export function AppButton({children, isLoading, ...props}) {
   return (
@@ -16,12 +16,12 @@ export function AppButton({children, isLoading, ...props}) {
         ...props.style,
       }}>
       {isLoading ? (
-        <ActivityIndicator size={26} color={'black'} />
+        <ActivityIndicator size={26} color={TEXT_WHITE} />
       ) : (
         <LargeText
           fontFamily="bold"
           style={{
-            color: props.textColor || '#303030',
+            color: props.textColor || TEXT_WHITE,
             ...(props.textStyle ?? {})
           }}>
           {children}
@@ -33,7 +33,7 @@ export function AppButton({children, isLoading, ...props}) {
 
 export function GrayButton({children, ...props}) {
   return (
-    <AppButton {...props} backgroundColor="#f1ecec" textColor="#303030">
+    <AppButton {...props} backgroundColor={BACKGROUND_DARK} textColor={TEXT_WHITE}>
       {children}
     </AppButton>
   );

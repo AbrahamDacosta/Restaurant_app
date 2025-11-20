@@ -8,7 +8,7 @@ import {
   getParkingPlaceMap,
 } from '../../Utils/Helpers/Parking/ParkingHelper';
 import {Dimensions} from 'react-native';
-import {DEFAULT_BORDER_COLOR, PRIMARY_COLOR} from '../../Theme/Theme';
+import {DEFAULT_BORDER_COLOR, PRIMARY_COLOR, CARD_BACKGROUND, BACKGROUND_BLACK, TEXT_WHITE} from '../../Theme/Theme';
 
 export default function ParkingView(props) {
   const {etageNumber, onParkingItemPicked, usedPlacesByEtages, activePlace, initialEtage} = props;
@@ -91,7 +91,7 @@ function ParkingPlaces({placeNumber, activePlace, usedPlaces, onPlacePicked}) {
                 style={{
                   height: width / 4 - 8,
                   width: width / 4 - 8,
-                  backgroundColor: '#fafafa',
+                  backgroundColor: CARD_BACKGROUND,
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRadius: 10,
@@ -160,7 +160,7 @@ function ParkingEtageItem({etageNumber, active, onPress}) {
     <TouchableOpacity
       onPress={onPress}
       style={{
-        borderColor: '#707070',
+        borderColor: DEFAULT_BORDER_COLOR,
         borderWidth: 1,
         minWidth: 115,
         height: 52,
@@ -168,9 +168,9 @@ function ParkingEtageItem({etageNumber, active, onPress}) {
         justifyContent: 'center',
         borderRadius: 10,
         marginRight: 8,
-        backgroundColor: active ? 'black' : 'transparent',
+        backgroundColor: active ? BACKGROUND_BLACK : 'transparent',
       }}>
-      <LightText>{etageLabel}</LightText>
+      <LightText style={{ color: active ? TEXT_WHITE : TEXT_WHITE }}>{etageLabel}</LightText>
     </TouchableOpacity>
   );
 }

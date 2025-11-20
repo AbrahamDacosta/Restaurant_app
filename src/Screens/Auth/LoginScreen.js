@@ -22,7 +22,7 @@ import Daos from '../../Daos';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import useDaoCall from '../../Hooks/useDaoCall';
-import { PRIMARY_COLOR } from '../../Theme/Theme';
+import { PRIMARY_COLOR, BACKGROUND_DARK, TEXT_WHITE } from '../../Theme/Theme';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required('Champs requis'),
@@ -68,9 +68,9 @@ export default function LoginScreen() {
 
 
   return (
-    <ContainerView style={{ backgroundColor: 'white', flex: 1 }}>
+    <ContainerView style={{ backgroundColor: BACKGROUND_DARK, flex: 1 }}>
 
-      <TitleText style={{ color: PRIMARY_COLOR }} fontFamily="bold">Application Partenaire</TitleText>
+      <TitleText style={{ color: TEXT_WHITE }} fontFamily="bold">Application Partenaire</TitleText>
 
       <Image
         resizeMode="contain"
@@ -84,7 +84,7 @@ export default function LoginScreen() {
       />
 
       <View style={{ marginBottom: 24 }}>
-        <TitleText style={{ marginBottom: -12, color: PRIMARY_COLOR }} fontFamily="bold">Connexion</TitleText>
+        <TitleText style={{ marginBottom: -12, color: TEXT_WHITE }} fontFamily="bold">Connexion</TitleText>
         {
           (errors && errors.response?.data.error != undefined) && (
             <CustomText style={{ color: 'red', marginTop: 4 }}>{errors.response.data.error}</CustomText>
