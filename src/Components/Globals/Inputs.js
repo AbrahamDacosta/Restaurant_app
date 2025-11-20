@@ -7,6 +7,7 @@ import {
 } from 'rn-material-ui-textfield';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment'
+import { TEXT_WHITE, TEXT_GRAY, PRIMARY_COLOR } from '../../Theme/Theme';
 
 export function AppInput(props) {
   return <TextField {...props} />;
@@ -16,6 +17,10 @@ export function AuthInput(props) {
   return (
     <AppInput
       {...props}
+      textColor={TEXT_WHITE}
+      baseColor={TEXT_GRAY}
+      tintColor={PRIMARY_COLOR}
+      labelTextStyle={{ color: TEXT_GRAY }}
       style={{
         ...props.style,
         marginTop: 32,

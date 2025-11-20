@@ -33,7 +33,7 @@ export function CustomText({children, ...props}) {
   }
 
   return (
-    <Text {...props} style={{...currentFont, color: LIGHT_DARK, ...props.style}}>
+    <Text {...props} style={{...currentFont, color: TEXT_WHITE, ...props.style}}>
       {children}
     </Text>
   );
