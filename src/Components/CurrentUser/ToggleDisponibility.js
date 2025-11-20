@@ -52,13 +52,16 @@ export default function ToggleDisponibility() {
         }
     });
 
-    if (isFetching)
+    // Use Redux user data as fallback if API call fails
+    const displayUser = currentUser || user;
+
+    if (isFetching && !user)
         return <ShimmerPlaceHolder LinearGradient={LinearGradient} height={45} width={128} style={{ marginTop: 8 }} />
 
     console.log("ToggleDisponibility - current user:", currentUser, "token:", token, "error:", fetchCurrentUserError)
 
-    // If there's an error and no current user, show error state
-    if (fetchCurrentUserError && !currentUser) {
+    // Only show error if we don't have any user data at all (neither from API nor Redux)
+    if (!displayUser) {
         console.log("ToggleDisponibility - Rendering error state");
         return (
             <View style={{ backgroundColor: CARD_BACKGROUND, paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -73,10 +76,10 @@ export default function ToggleDisponibility() {
             <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>Accepte les commandes</CustomText>
 
             {
-                !isLoading && currentUser != undefined && (
+                !isLoading && displayUser != undefined && (
                     <ToggleSwitch
                         disabled={isLoading}
-                        isOn={currentUser.accept_order == 1}
+                        isOn={displayUser.accept_order == 1}
                         onColor="green"
                         offColor="red"
 
