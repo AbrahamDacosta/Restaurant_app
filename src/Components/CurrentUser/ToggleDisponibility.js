@@ -37,9 +37,7 @@ export default function ToggleDisponibility() {
     console.log("current user", currentUser, token, fetchCurrentUserError)
 
     return (
-        <TouchableOpacity onPress={() => {
-            toggle();
-        }} style={{ backgroundColor: '#e8e8e8', paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <View style={{ backgroundColor: '#e8e8e8', paddingVertical: 16, borderTopEndRadius: 16, borderTopStartRadius: 16, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
             <CustomText fontFamily="bold" style={{ color: PRIMARY_COLOR }}>Accepte les commandes</CustomText>
 
@@ -62,6 +60,6 @@ export default function ToggleDisponibility() {
                 isLoading && <ActivityIndicator color={PRIMARY_COLOR} />
             }
 
-        </TouchableOpacity>
+        </View>
     )
 }
