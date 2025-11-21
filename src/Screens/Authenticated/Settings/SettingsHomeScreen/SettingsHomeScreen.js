@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, Linking } from 'react-native'
+import { View, TouchableOpacity, Image, Linking, ScrollView } from 'react-native'
 import ContainerView from '../../../../Components/Globals/ContainerView';
 import { AppButton } from '../../../../Components/Globals/Butttons';
 import { LargeText, CustomText, TitleText } from '../../../../Components/Globals/Texts';
@@ -13,6 +13,7 @@ import Daos from '../../../../Daos';
 import useUser from '../../../../Hooks/useUser';
 import { getImageUrl } from '../../../../Utils/Helpers/Parking/ParkingHelper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import StoreReviewsSection from '../../../../Components/Reviews/StoreReviewsSection';
 
 export default function SettingsHomeScreen() {
 
@@ -50,18 +51,18 @@ export default function SettingsHomeScreen() {
 
 
     return (
-        <View style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
             <ContainerView style={{ paddingBottom: 16 }}>
 
 
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Image style={{ height: 72, width: 72 }} source={{
+                    <Image style={{ height: 72, width: 72, borderRadius: 36 }} source={{
                         uri: getImageUrl(
                             !!user.image ? user.image : 'user-200.png'
                         )
                     }} />
 
-                    <View style={{ marginLeft: 16 }}>
+                    <View style={{ marginLeft: 16, flex: 1 }}>
                         <CustomText fontFamily="bold" style={{ fontSize: 24, color: PRIMARY_COLOR }}>{user.store_name}</CustomText>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <FontAwesome size={18} color={PRIMARY_COLOR} name="phone" />
@@ -72,15 +73,14 @@ export default function SettingsHomeScreen() {
 
 
                 </View>
-                
+
 
                 <AppButton style={{ marginTop: 20 }} isLoading={isDeconnecting} onPress={() => {
                     logout()
                 }}>Deconnexion</AppButton>
 
-                <View style={{ flex: 1 }}>
-
-                </View>
+                {/* Customer Reviews Section */}
+                <StoreReviewsSection storeId={user.id} />
 
 
                 <View style={{ marginTop: 34, marginBottom: 16 }}>
@@ -90,26 +90,26 @@ export default function SettingsHomeScreen() {
                 </View>
 
                 <View>
-                    <CustomText fontFamily="bold" style={{fontSize: 16}}>SERVICE CLIENT</CustomText>
-                    <TouchableOpacity onPress={() => callPhone("0799079729")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 8, borderRadius: 10  }}>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE CLIENT</CustomText>
+                    <TouchableOpacity onPress={() => callPhone("0799079729")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
-                        <CustomText style={{color: 'white', fontSize: 22, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 99 07 97 29</CustomText>
+                        <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 99 07 97 29</CustomText>
                     </TouchableOpacity>
                 </View>
 
-                <View>
-                    <CustomText fontFamily="bold" style={{fontSize: 16, marginTop: 8}}>SERVICE TECHNIQUE</CustomText>
-                    <TouchableOpacity onPress={() => callPhone("0715032308")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 8, borderRadius: 10  }}>
+                <View style={{marginTop: 12}}>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE TECHNIQUE</CustomText>
+                    <TouchableOpacity onPress={() => callPhone("0715032308")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
-                        <CustomText style={{color: 'white', fontSize: 22, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 15 03 23 08</CustomText>
+                        <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 15 03 23 08</CustomText>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{marginBottom: 8}}>
-                    <CustomText fontFamily="bold" style={{fontSize: 16, marginTop: 8}}>SERVICE FINANCIER</CustomText>
-                    <TouchableOpacity onPress={() => callPhone("0714075932")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 8, borderRadius: 10  }}>
+                <View style={{marginBottom: 8, marginTop: 12}}>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE FINANCIER</CustomText>
+                    <TouchableOpacity onPress={() => callPhone("0714075932")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
-                        <CustomText style={{color: 'white', fontSize: 22, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 14 07 59 32</CustomText>
+                        <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 14 07 59 32</CustomText>
                     </TouchableOpacity>
                 </View>
 
@@ -129,7 +129,7 @@ export default function SettingsHomeScreen() {
 
                 {/* </View> */}
             </ContainerView>
-        </View>
+        </ScrollView>
     )
 }
 
