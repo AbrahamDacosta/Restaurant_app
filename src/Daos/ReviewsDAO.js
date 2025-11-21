@@ -14,16 +14,18 @@ class ReviewsDAO {
    */
   async getStoreReviews(storeId, page = 1, limit = 10, dateDebut = null, dateFin = null) {
     try {
-      // Default date range: last year to today
+      // Default date range: last 5 years to today
       const date_debut = dateDebut || moment().subtract(5, 'years').format('YYYY-MM-DD');
       const date_fin = dateFin || moment().format('YYYY-MM-DD');
 
-      const response = await axios.post(GET_STORE_REVIEWS, {
-        id_store: storeId,
-        date_debut,
-        date_fin,
-        page,
-        limit
+      const response = await axios.get(GET_STORE_REVIEWS, {
+        params: {
+          id_store: storeId,
+          date_debut,
+          date_fin,
+          page,
+          limit
+        }
       });
       return response.data;
     } catch (error) {
@@ -39,8 +41,10 @@ class ReviewsDAO {
    */
   async getStoreRating(storeId) {
     try {
-      const response = await axios.post(GET_STORE_RATING, {
-        id_store: storeId
+      const response = await axios.get(GET_STORE_RATING, {
+        params: {
+          id_store: storeId
+        }
       });
       return response.data;
     } catch (error) {
