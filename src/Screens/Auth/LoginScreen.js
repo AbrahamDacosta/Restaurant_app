@@ -68,91 +68,147 @@ export default function LoginScreen() {
 
 
   return (
-    <ContainerView style={{ backgroundColor: BACKGROUND_DARK, flex: 1 }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}
+      contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps="handled">
+      <ContainerView style={styles.container}>
 
-      <TitleText style={{ color: TEXT_WHITE }} fontFamily="bold">Application Partenaire</TitleText>
+        <View style={styles.headerSection}>
+          <TitleText style={styles.appTitle} fontFamily="bold">Fakodrop</TitleText>
+          <CustomText style={styles.subtitle}>Application Partenaire</CustomText>
+        </View>
 
-      <Image
-        resizeMode="contain"
-        style={{
-          resizeMode: 'contain',
-          height: undefined,
-          width: undefined,
-          flex: 6 / 8,
-        }}
-        source={require('assets/images/logo.png')}
-      />
+        <View style={styles.logoContainer}>
+          <Image
+            resizeMode="contain"
+            style={styles.logo}
+            source={require('assets/images/logo.png')}
+          />
+        </View>
 
-      <View style={{ marginBottom: 24 }}>
-        <TitleText style={{ marginBottom: -12, color: TEXT_WHITE }} fontFamily="bold">Connexion</TitleText>
-        {
-          (errors && errors.response?.data.error != undefined) && (
-            <CustomText style={{ color: 'red', marginTop: 4 }}>{errors.response.data.error}</CustomText>
-          )
-        }
+        <View style={styles.formSection}>
+          <View style={styles.formHeader}>
+            <TitleText style={styles.formTitle} fontFamily="bold">Connexion</TitleText>
+            {
+              (errors && errors.response?.data.error != undefined) && (
+                <View style={styles.errorContainer}>
+                  <CustomText style={styles.errorText}>{errors.response.data.error}</CustomText>
+                </View>
+              )
+            }
 
-        {
-          (errors && !errors.response) && (
-            <CustomText style={{ color: 'red', marginTop: 4 }}>Impossible de se connecter au serveur.{'\n'}Vérifiez votre connexion à internet.</CustomText>
-          )
-        }
-      </View>
+            {
+              (errors && !errors.response) && (
+                <View style={styles.errorContainer}>
+                  <CustomText style={styles.errorText}>Impossible de se connecter au serveur.{'\n'}Vérifiez votre connexion à internet.</CustomText>
+                </View>
+              )
+            }
+          </View>
 
-      <AuthInput
-        onChangeText={value => {
-          formik.handleChange('email')(value);
-        }}
-        label="Email/ID"
-        style={{ padding: 0 }}
-        placeholder="Email/ID"
-        error={formik?.errors.email}
-        value={formik.values.email}
-      />
+          <AuthInput
+            onChangeText={value => {
+              formik.handleChange('email')(value);
+            }}
+            label="Email/ID"
+            style={{ padding: 0 }}
+            placeholder="Entrez votre email ou ID"
+            error={formik?.errors.email}
+            value={formik.values.email}
+          />
 
-      <AuthInput
-        label="Mot de passe"
-        error={formik?.errors.password}
-        secureTextEntry={true}
-        style={{ padding: 0 }}
-        value={formik.values.password}
-        onChangeText={value => {
-          formik.handleChange('password')(value);
-        }}
-        placeholder="Mot de passe"
-      />
+          <AuthInput
+            label="Mot de passe"
+            error={formik?.errors.password}
+            secureTextEntry={true}
+            style={{ padding: 0 }}
+            value={formik.values.password}
+            onChangeText={value => {
+              formik.handleChange('password')(value);
+            }}
+            placeholder="Entrez votre mot de passe"
+          />
 
-      <View style={{ alignItems: 'flex-end' }}>
-        <TextButton>Mot de passe oublié</TextButton>
-      </View>
+          <View style={styles.forgotPasswordContainer}>
+            <TextButton>Mot de passe oublié ?</TextButton>
+          </View>
 
-      <AppButton
-        isLoading={isLoading}
-        onPress={() => {
-          formik.submitForm();
-        }}
-        style={{
-          marginTop: 18,
-        }}>
-        Connexion
-      </AppButton>
-      {/* 
-      <LightText style={{marginVertical: 18, alignSelf: 'center'}}>
-        OU
-      </LightText> */}
+          <AppButton
+            isLoading={isLoading}
+            onPress={() => {
+              formik.submitForm();
+            }}
+            style={styles.loginButton}>
+            Connexion
+          </AppButton>
+        </View>
 
-      {/* <GrayButton style={{}}>Se connecter avec Google</GrayButton> */}
-      {/* 
-      <View
-        style={{
-          marginTop: 16,
-          justifyContent: 'center',
-          flexDirection: 'row',
-        }}>
-        <LightText style={{marginRight: 4}}>Pas de compte ?</LightText>
-        <TextButton onPress={() => navigation.navigate('Auth.SignupScreen')}>
-          S'inscrire
-        </TextButton>
-      </View> */}
-    </ContainerView>
+      </ContainerView>
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: BACKGROUND_DARK,
+    flex: 1,
+    paddingBottom: 32,
+  },
+  headerSection: {
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 12,
+  },
+  appTitle: {
+    color: PRIMARY_COLOR,
+    fontSize: 32,
+    marginBottom: 4,
+  },
+  subtitle: {
+    color: TEXT_WHITE,
+    fontSize: 16,
+    opacity: 0.8,
+  },
+  logoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  logo: {
+    width: '80%',
+    height: 200,
+  },
+  formSection: {
+    flex: 1,
+  },
+  formHeader: {
+    marginBottom: 16,
+  },
+  formTitle: {
+    color: TEXT_WHITE,
+    fontSize: 28,
+    marginBottom: 8,
+  },
+  errorContainer: {
+    backgroundColor: 'rgba(255, 77, 77, 0.15)',
+    borderLeftWidth: 4,
+    borderLeftColor: '#ff4d4d',
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 12,
+  },
+  errorText: {
+    color: '#ff6b6b',
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  forgotPasswordContainer: {
+    alignItems: 'flex-end',
+    marginTop: 8,
+  },
+  loginButton: {
+    marginTop: 24,
+  },
+});

@@ -62,8 +62,9 @@ export const GET_ACTIVE_ABONNEMENT = `${BASE_URL}/users/subscriptions/active-abo
 export const POST_DEMANDE_INTERVENTION = `${BASE_URL}/demande-intervention`;
 export const GET_DEMANDES_INTERVENTION = `${BASE_URL}/demandes-interventions`;
 
-
-
+// Reviews
+export const GET_STORE_REVIEWS = `${BASE_URL}/store_reviews`;
+export const GET_STORE_RATING = `${BASE_URL}/store_rating`;
 
 
 
