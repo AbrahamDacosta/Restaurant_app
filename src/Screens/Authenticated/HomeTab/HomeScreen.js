@@ -1,6 +1,6 @@
 import React, { StatusBar, Text, View, StyleSheet } from 'react-native';
 import HomeScreenHeader from '../../../Components/Headers/HomeScreenHeader';
-import { PRIMARY_COLOR } from '../../../Theme/Theme';
+import { PRIMARY_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE } from '../../../Theme/Theme';
 import MapView from 'react-native-maps';
 import { CustomText } from '../../../Components/Globals/Texts';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,11 +15,11 @@ const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 export default function HomeScreen(props) {
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
             <StatusBar backgroundColor={PRIMARY_COLOR} />
             <HomeScreenHeader />
-            <View style={{ backgroundColor: 'white', paddingVertical: 24, alignItems: 'center' }}>
-                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, marginBottom: 16 }}>Aujourd'hui</CustomText>
+            <View style={{ backgroundColor: CARD_BACKGROUND, paddingVertical: 24, alignItems: 'center' }}>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, marginBottom: 16, color: TEXT_WHITE }}>Aujourd'hui</CustomText>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 

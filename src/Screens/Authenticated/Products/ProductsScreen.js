@@ -8,7 +8,7 @@ import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 
 import LinearGradient from 'react-native-linear-gradient';
 import { getImageUrl } from '../../../Utils/Helpers/Parking/ParkingHelper';
-import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, PRIMARY_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { useNavigation } from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
@@ -54,14 +54,14 @@ export default function ProductsScreen() {
     );
 
     return (
-        <View style={{ flex: 1, }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
 
             {
                 isSearchOpen && (
                     <View style={{ backgroundColor: PRIMARY_COLOR, padding: 8, flexDirection: 'row', alignItems: 'center', paddingRight: 16 }}>
                         <TextInput onChangeText={(value) => {
                             setSearch(value);
-                        }} placeholder='Recherchez un produit' placeholderTextColor={"white"} style={{ flex: 1, }} />
+                        }} placeholder='Recherchez un produit' placeholderTextColor={"white"} style={{ flex: 1, color: TEXT_WHITE }} />
                         <TouchableOpacity onPress={() => {
                             setSearch()
                             setIsSearchOpen(false)
@@ -122,14 +122,14 @@ function ProductItem({ product, statut }) {
 
 
     return (
-        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: 'white', flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center' }}>
+        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: CARD_BACKGROUND, flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255, 127, 0, 0.1)' }}>
 
-            <View style={{ backgroundColor: 'white', elevation: 8, borderRadius: 8 }}>
+            <View style={{ backgroundColor: CARD_BACKGROUND, elevation: 8, borderRadius: 8 }}>
                 <Image style={{ height: 72, width: 72, resizeMode: 'contain' }} source={{ uri: getImageUrl(product.image) }} />
             </View>
 
             <View style={{ marginLeft: 12, flex: 1 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium }}>{product.libelle_fr}</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: TEXT_WHITE }}>{product.libelle_fr}</CustomText>
                 <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: ORANGE_COLOR, textDecorationLine: product.prix_promo != null ? 'line-through' : undefined, }}>{product.prix} FCFA</CustomText>
                 {
                     !!product.prix_promo && (

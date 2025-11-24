@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import CommandeItem from '../../../Components/Commandes/CommandeItem';
 import useUser from '../../../Hooks/useUser';
 import { useNavigation } from '@react-navigation/native';
-import { PRIMARY_COLOR, PRIMARY_COLOR_DARK } from '../../../Theme/Theme';
+import { PRIMARY_COLOR, PRIMARY_COLOR_DARK, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ToggleDisponibility from '../../../Components/CurrentUser/ToggleDisponibility';
 import { firebase } from '@react-native-firebase/messaging';
 import Snackbar from 'react-native-snackbar';
@@ -121,7 +121,7 @@ export default function CommandeTabScreen() {
     });
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
             <StatusBar backgroundColor={PRIMARY_COLOR_DARK} />
             <TabView
                 renderTabBar={props => (
@@ -275,18 +275,18 @@ function CommandesScreen({ type }) {
     console.log('loadingError', loadingError);
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
 
             {!isLoading && !!loadingError &&
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 }}>
-                    <CustomText style={{ alignItems: 'center', textAlign: 'center', marginBottom: 8 }}>Une erreur est survenue lors de l'obtention des éléments</CustomText>
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, backgroundColor: BACKGROUND_DARK }}>
+                    <CustomText style={{ alignItems: 'center', textAlign: 'center', marginBottom: 8, color: TEXT_WHITE }}>Une erreur est survenue lors de l'obtention des éléments</CustomText>
                     {loadingError?.message && (
-                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: '#666' }}>
+                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: TEXT_GRAY }}>
                             {loadingError.message}
                         </CustomText>
                     )}
                     {loadingError?.response?.data?.error && (
-                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: '#666' }}>
+                        <CustomText style={{ fontSize: 12, textAlign: 'center', marginBottom: 8, color: TEXT_GRAY }}>
                             {loadingError.response.data.error}
                         </CustomText>
                     )}
@@ -337,8 +337,8 @@ function CommandesScreen({ type }) {
             }
             {
                 !!items && items.length == 0 && (
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <CustomText fontFamily="bold">{noCommandeText}</CustomText>
+                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: BACKGROUND_DARK }}>
+                        <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>{noCommandeText}</CustomText>
                     </View>
 
                 )
@@ -427,10 +427,10 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
         onBackdropPress={() => { onClose() }}
         onBackButtonPress={() => { onClose() }}
         visible={isVisible} hasBackdrop={true}>
-        <View style={{ backgroundColor: PRIMARY_COLOR_DARK }} >
+        <View style={{ backgroundColor: CARD_BACKGROUND, borderRadius: 12 }} >
 
             <View style={{ padding: 16 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large }}>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.large, color: TEXT_WHITE }}>
                     {
                         pickerMode == "date-start" ? "Selectionnez la date de départ" : "Selectionnez la date de fin"
                     }
@@ -441,8 +441,8 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                 <TouchableOpacity onPress={() => {
                     setPickerMode('date-start')
                 }} style={{ flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ color: 'white' }}>Du</CustomText>
-                    <CustomText fontFamily={pickerMode == "date-start" ? "bold" : undefined} style={{ fontSize: moderateScale(24), }}>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Du</CustomText>
+                    <CustomText fontFamily={pickerMode == "date-start" ? "bold" : undefined} style={{ fontSize: moderateScale(24), color: TEXT_WHITE }}>
                         {
                             !!startDate ? moment(startDate).format("DD/MM/YYYY") : "-"
                         }
@@ -451,8 +451,8 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                 <TouchableOpacity onPress={() => {
                     setPickerMode('date-end')
                 }} style={{ flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ color: 'white' }}>Au</CustomText>
-                    <CustomText fontFamily={pickerMode == "date-end" ? "bold" : undefined} style={{ fontSize: moderateScale(24), }}>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Au</CustomText>
+                    <CustomText fontFamily={pickerMode == "date-end" ? "bold" : undefined} style={{ fontSize: moderateScale(24), color: TEXT_WHITE }}>
                         {
                             !!endDate ? moment(endDate).format("DD/MM/YYYY") : "-"
                         }
@@ -481,7 +481,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                                 setPickerMode("date-end")
                             else alert("Vous devez selectionner la date de début")
                         }}>
-                            <CustomText fontFamily="bold" style={{ padding: 0, color: 'white' }}>Selectionnez la date de fin</CustomText>
+                            <CustomText fontFamily="bold" style={{ padding: 0, color: PRIMARY_COLOR }}>Selectionnez la date de fin</CustomText>
                         </TouchableOpacity>
                     )
                 }
@@ -499,7 +499,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
 
                             else alert("Vous devez selectionner la date de début")
                         }}>
-                            <CustomText fontFamily="bold" style={{ padding: 0, color: 'white' }}>Filter</CustomText>
+                            <CustomText fontFamily="bold" style={{ padding: 0, color: PRIMARY_COLOR }}>Filter</CustomText>
                         </TouchableOpacity>
                     )
                 }</View>
