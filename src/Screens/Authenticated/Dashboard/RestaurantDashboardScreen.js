@@ -28,7 +28,7 @@ export default function RestaurantDashboardScreen({ navigation }) {
   const [hasMore, setHasMore] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
 
-  const user = useSelector(state => state.application.user);
+  const user = useSelector(state => state.ApplicationStore.user);
   const storeId = user?.id;
 
   useEffect(() => {
