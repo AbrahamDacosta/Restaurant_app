@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Alert, Modal, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomText } from '../../../Components/Globals/Texts';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
-import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation, useQuery } from 'react-query';
 import Daos from '../../../Daos';
@@ -23,8 +23,8 @@ export default function SimpleCommandeResume({ reloadCommandeDetailPage, command
                 <CommandeContentList commandeDetails={commande} items={commande.items} />
 
             </ScrollView>
-            <View style={{ backgroundColor: 'white', padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
-                <CustomText fontFamily="bold" style={{ color: 'gray' }}>Montant total</CustomText>
+            <View style={{ backgroundColor: CARD_BACKGROUND, padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Montant total</CustomText>
                 <CustomText fontFamily="bold" style={{ color: ORANGE_COLOR }}>{commande.order_amount} FR</CustomText>
             </View>
         </View>

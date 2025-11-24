@@ -4,7 +4,7 @@ import { CustomText } from '../../../Components/Globals/Texts';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import { ORANGE_COLOR, PRIMARY_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, PRIMARY_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import { formatDate, generateRandomString, getImageUrl } from '../../../Utils/Helpers/Parking/ParkingHelper';
 import { AppButton } from '../../../Components/Globals/Butttons';
 import { useMutation } from 'react-query';
@@ -36,24 +36,24 @@ export default function UpdateCommandeScreen() {
 
 
     return (
-        <View style={{ flex: 1 }}>
-            <StatusBar backgroundColor={'red'} barStyle={'light-content'} />
-            <View style={{ backgroundColor: 'red' }}>
+        <View style={{ flex: 1, backgroundColor: BACKGROUND_DARK }}>
+            <StatusBar backgroundColor={PRIMARY_COLOR} barStyle={'light-content'} />
+            <View style={{ backgroundColor: PRIMARY_COLOR }}>
 
-                <View style={{ backgroundColor: 'red', flexDirection: 'row', paddingHorizontal: 8, paddingVertical: 12, alignItems: 'center' }}>
+                <View style={{ backgroundColor: PRIMARY_COLOR, flexDirection: 'row', paddingHorizontal: 8, paddingVertical: 12, alignItems: 'center' }}>
                     <TouchableOpacity onPress={() => { navigator.goBack() }}>
-                        <Feather name="chevron-left" color="white" size={32} />
+                        <Feather name="chevron-left" color={TEXT_WHITE} size={32} />
                     </TouchableOpacity>
                     <View>
-                        <View style={{ padding: 8, borderWidth: 2, borderColor: 'white', borderRadius: 50 }}>
-                            <Feather name="box" color="white" size={20} />
+                        <View style={{ padding: 8, borderWidth: 2, borderColor: TEXT_WHITE, borderRadius: 50 }}>
+                            <Feather name="box" color={TEXT_WHITE} size={20} />
                         </View>
                     </View>
 
                     {
                         commande && <View style={{ marginLeft: 8 }}>
-                            <CustomText fontFamily="bold" style={{ color: 'white' }}>#{commande.reference}</CustomText>
-                            <CustomText style={{ color: 'white', fontSize: FontSizes.small }}>{formatDate(commande.date_enreg, "DD MMM YYYY")}</CustomText>
+                            <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>#{commande.reference}</CustomText>
+                            <CustomText style={{ color: TEXT_WHITE, fontSize: FontSizes.small }}>{formatDate(commande.date_enreg, "DD MMM YYYY")}</CustomText>
                         </View>}
                 </View>
             </View>
@@ -103,7 +103,7 @@ export default function UpdateCommandeScreen() {
                             cart
                         })
                     else alert("Vous ne pouvez pas proposer une commande sans aucun produit à l'intérieur")
-                }} style={{ borderRadius: 0, backgroundColor: ORANGE_COLOR, }} textStyle={{ color: 'white' }}>
+                }} style={{ borderRadius: 0, backgroundColor: ORANGE_COLOR, }} textStyle={{ color: TEXT_WHITE }}>
                     Notifier le client
                 </AppButton>
             </View>
@@ -116,14 +116,14 @@ export default function UpdateCommandeScreen() {
 function CommandeItem({ commandeItem, quantity, canIncreaseQuantity, available, onCommandeQuantityUpdate, onCommandeToggle }) {
 
     return (
-        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: 'white', flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center', opacity: (quantity == 0 || available == false) ? 0.4 : 1 }}>
+        <View style={{ borderRadius: 12, elevation: 4, backgroundColor: CARD_BACKGROUND, flexDirection: 'row', marginVertical: 6, marginHorizontal: 12, padding: 14, paddingVertical: 18, alignItems: 'center', opacity: (quantity == 0 || available == false) ? 0.4 : 1 }}>
 
-            <View style={{ backgroundColor: 'white', elevation: 8, borderRadius: 8 }}>
+            <View style={{ backgroundColor: CARD_BACKGROUND, elevation: 8, borderRadius: 8 }}>
                 <Image style={{ height: 72, width: 72, resizeMode: 'contain' }} source={{ uri: getImageUrl(commandeItem.image) }} />
             </View>
 
             <View style={{ marginLeft: 12, flex: 1 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium }}>{commandeItem.libelle_fr}</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: TEXT_WHITE }}>{commandeItem.libelle_fr}</CustomText>
                 <CustomText fontFamily="bold" style={{ fontSize: FontSizes.medium, color: ORANGE_COLOR }}>{commandeItem.prix} FCFA</CustomText>
 
                 {
@@ -136,7 +136,7 @@ function CommandeItem({ commandeItem, quantity, canIncreaseQuantity, available, 
                         item => !!item.libelle && !!item.prix
                     ).map(
                         item => (
-                            <CustomText style={{ color: 'gray', fontSize: FontSizes.small, marginVertical: 2 }}>{item.libelle} ( {item.prix} FCFA )</CustomText>
+                            <CustomText style={{ color: TEXT_GRAY, fontSize: FontSizes.small, marginVertical: 2 }}>{item.libelle} ( {item.prix} FCFA )</CustomText>
                         )
                     )
                 }

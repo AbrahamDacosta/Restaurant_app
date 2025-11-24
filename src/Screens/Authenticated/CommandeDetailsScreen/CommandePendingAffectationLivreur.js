@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
 import { CustomText } from '../../../Components/Globals/Texts';
-import { ORANGE_COLOR } from '../../../Theme/Theme';
+import { ORANGE_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation } from 'react-query';
 import Daos from '../../../Daos';
@@ -34,8 +34,8 @@ export default function CommandePendingAffectationLivreur({commande, reloadComma
                 <View style={{flex: 1}}>
 
                 <CommandeContentList commandeDetails={commande} items={commande.items} />
-                <View style={{ backgroundColor: 'white', padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <CustomText fontFamily="bold" style={{ color: 'gray' }}>Montant total</CustomText>
+                <View style={{ backgroundColor: CARD_BACKGROUND, padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Montant total</CustomText>
                     <CustomText fontFamily="bold" style={{ color: ORANGE_COLOR }}>25.000 FR</CustomText>
                 </View>
                 </View>
@@ -45,12 +45,12 @@ export default function CommandePendingAffectationLivreur({commande, reloadComma
             <View style={{ flexDirection: 'row' }}>
 
                 <TouchableOpacity onPress={() => { setIsConfirmationOpened("affect-to-rider") }} style={{ backgroundColor: ORANGE_COLOR, flex: 1, alignItems: 'center', paddingVertical: 8 }}>
-                    <CustomText fontFamily="bold" style={{ color: 'white', fontSize: moderateScale(24) }}>Affecter à un livreur</CustomText>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_WHITE, fontSize: moderateScale(24) }}>Affecter à un livreur</CustomText>
                 </TouchableOpacity>
                 {
                     (isAffecting) && (
                         <View style={{ position: 'absolute', backgroundColor: ORANGE_COLOR, top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' }}>
-                            <ActivityIndicator size={36} color={"white"} />
+                            <ActivityIndicator size={36} color={TEXT_WHITE} />
                         </View>
                     )
                 }

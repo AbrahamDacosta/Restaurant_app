@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomText } from '../Globals/Texts';
 import { Image, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { ORANGE_COLOR, CARD_BACKGROUND, TEXT_GRAY } from '../../Theme/Theme';
+import { ORANGE_COLOR, CARD_BACKGROUND, TEXT_GRAY, TEXT_WHITE } from '../../Theme/Theme';
 import { getImageUrl } from '../../Utils/Helpers/Parking/ParkingHelper';
 
 
@@ -58,7 +58,7 @@ function CommandeItem({ commandeItem, oldCommandeItem, hasBeenUpdated }) {
             </View>
 
             <View style={{ marginLeft: 12, flex: 1 }}>
-                <CustomText fontFamily="bold" style={{ fontSize: 16 }}>{commandeItem.libelle_fr}</CustomText>
+                <CustomText fontFamily="bold" style={{ fontSize: 16, color: TEXT_WHITE }}>{commandeItem.libelle_fr}</CustomText>
                 {
                     !!commandeItem.informations && (
                         <CustomText fontFamily="bold" style={{ fontSize: 13, color: 'red' }}>Instruction(s) spécifique(s): {commandeItem.informations}</CustomText>

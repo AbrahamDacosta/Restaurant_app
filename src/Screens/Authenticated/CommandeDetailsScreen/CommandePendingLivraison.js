@@ -5,7 +5,7 @@ import MapView, { Marker } from 'react-native-maps';
 import Timeline from 'react-native-timeline-flatlist'
 import moment from 'moment';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { PRIMARY_COLOR } from '../../../Theme/Theme';
+import { PRIMARY_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import { useNavigation } from '@react-navigation/native';
 import { AppButton } from '../../../Components/Globals/Butttons';
 import { useMutation, useQuery } from 'react-query';
@@ -158,7 +158,7 @@ export default function CommandePendingLivraison({ commande }) {
             {/* </View> */}
 
 
-            <View style={{ flex: 1, backgroundColor: 'white', padding: 18 }}>
+            <View style={{ flex: 1, backgroundColor: CARD_BACKGROUND, padding: 18 }}>
 
                 {
                     commande.etat == "3" && (
@@ -167,7 +167,7 @@ export default function CommandePendingLivraison({ commande }) {
                 }
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <CustomText fontFamily="bold" style={{ marginBottom: 8 }}>Resumé de la commande</CustomText>
+                    <CustomText fontFamily="bold" style={{ marginBottom: 8, color: TEXT_WHITE }}>Resumé de la commande</CustomText>
 
                     <TouchableOpacity
                         onPress={() => {
@@ -179,7 +179,7 @@ export default function CommandePendingLivraison({ commande }) {
                             backgroundColor: PRIMARY_COLOR, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8
                             , borderRadius: 4
                         }}>
-                        <CustomText style={{ color: 'white', }} fontFamily="bold">Voir la commande</CustomText>
+                        <CustomText style={{ color: TEXT_WHITE, }} fontFamily="bold">Voir la commande</CustomText>
                     </TouchableOpacity>
                 </View>
 
@@ -187,8 +187,8 @@ export default function CommandePendingLivraison({ commande }) {
                 <Timeline
                     renderDetail={(data) => {
                         return (
-                            <View style={{ backgroundColor: 'white', borderRadius: 4, elevation: 4, padding: 12, marginRight: 12, flexDirection: 'row' }}>
-                                <CustomText fontFamily="bold" style={{ flex: 1 }}>{data.title}</CustomText>
+                            <View style={{ backgroundColor: CARD_BACKGROUND, borderRadius: 4, elevation: 4, padding: 12, marginRight: 12, flexDirection: 'row', borderWidth: 1, borderColor: '#2A2A2A' }}>
+                                <CustomText fontFamily="bold" style={{ flex: 1, color: TEXT_WHITE }}>{data.title}</CustomText>
                                 {
                                     data.checked && (
                                         <Ionicons name="checkmark-done-outline" color={PRIMARY_COLOR} size={24} />
