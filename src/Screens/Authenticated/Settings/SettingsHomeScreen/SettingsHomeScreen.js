@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Image, Linking, ScrollView } from 'react-native
 import ContainerView from '../../../../Components/Globals/ContainerView';
 import { AppButton } from '../../../../Components/Globals/Butttons';
 import { LargeText, CustomText, TitleText } from '../../../../Components/Globals/Texts';
-import { DEFAULT_BORDER_COLOR, ORANGE_COLOR, PRIMARY_COLOR } from '../../../../Theme/Theme';
+import { DEFAULT_BORDER_COLOR, ORANGE_COLOR, PRIMARY_COLOR, BACKGROUND_DARK, TEXT_WHITE, TEXT_GRAY } from '../../../../Theme/Theme';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useDispatch, useSelector } from 'react-redux';
 import { deconnectUser } from '../../../../Store/ApplicationStore';
@@ -51,7 +51,7 @@ export default function SettingsHomeScreen() {
 
 
     return (
-        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ flex: 1, backgroundColor: BACKGROUND_DARK }} showsVerticalScrollIndicator={false}>
             <ContainerView style={{ paddingBottom: 16 }}>
 
 
@@ -86,11 +86,11 @@ export default function SettingsHomeScreen() {
                 <View style={{ marginTop: 34, marginBottom: 16 }}>
                 <View style={{height: 1, backgroundColor: 'gray', opacity: 0.2, marginBottom: 8}}></View>
 
-                    <CustomText fontFamily="bold" style={{ fontSize: 24, color: 'gray' }}>Contactez-nous</CustomText>
+                    <CustomText fontFamily="bold" style={{ fontSize: 24, color: TEXT_WHITE }}>Contactez-nous</CustomText>
                 </View>
 
                 <View>
-                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE CLIENT</CustomText>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: TEXT_WHITE}}>SERVICE CLIENT</CustomText>
                     <TouchableOpacity onPress={() => callPhone("0799079729")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
                         <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 99 07 97 29</CustomText>
@@ -98,7 +98,7 @@ export default function SettingsHomeScreen() {
                 </View>
 
                 <View style={{marginTop: 12}}>
-                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE TECHNIQUE</CustomText>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: TEXT_WHITE}}>SERVICE TECHNIQUE</CustomText>
                     <TouchableOpacity onPress={() => callPhone("0715032308")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
                         <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 15 03 23 08</CustomText>
@@ -106,7 +106,7 @@ export default function SettingsHomeScreen() {
                 </View>
 
                 <View style={{marginBottom: 8, marginTop: 12}}>
-                    <CustomText fontFamily="bold" style={{fontSize: 16, color: 'white'}}>SERVICE FINANCIER</CustomText>
+                    <CustomText fontFamily="bold" style={{fontSize: 16, color: TEXT_WHITE}}>SERVICE FINANCIER</CustomText>
                     <TouchableOpacity onPress={() => callPhone("0714075932")} style={{ backgroundColor: ORANGE_COLOR, flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginTop: 8  }}>
                         <FontAwesome name="phone" color="white" size={22} />
                         <CustomText style={{color: 'white', fontSize: 20, flex: 1, textAlign: 'right'}} textAlign="right" fontFamily="bold">07 14 07 59 32</CustomText>

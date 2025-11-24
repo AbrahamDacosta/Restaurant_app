@@ -3,7 +3,7 @@ import { CustomText } from '../Globals/Texts';
 import { View } from 'react-native'
 import Ripple from 'react-native-material-ripple';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { LUXURY_BLACK, PRIMARY_COLOR } from '../../Theme/Theme';
+import { LUXURY_BLACK, PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../Theme/Theme';
 import { useSelector } from 'react-redux';
 
 export default function AppTabBarNavigation({ state, descriptors, navigation }) {
@@ -11,7 +11,7 @@ export default function AppTabBarNavigation({ state, descriptors, navigation }) 
     console.log("tabbarprops")
 
     return (
-        <View style={{ flexDirection: 'row', backgroundColor: 'white' }}>
+        <View style={{ flexDirection: 'row', backgroundColor: CARD_BACKGROUND, borderTopWidth: 1, borderTopColor: 'rgba(255, 127, 0, 0.1)' }}>
 
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
@@ -58,7 +58,7 @@ export default function AppTabBarNavigation({ state, descriptors, navigation }) 
 
 
                         <View style={{ backgroundColor: isFocused ? PRIMARY_COLOR : 'transparent', paddingHorizontal: 16, paddingVertical: 4, borderRadius: 16 }}>
-                            <options.tabBarIcon style={{ fontSize: 24, color: isFocused ? 'white' : 'black' }} name="magnify" />
+                            <options.tabBarIcon style={{ fontSize: 24, color: isFocused ? 'white' : TEXT_WHITE }} name="magnify" />
 {/* 
                             {
                                 options.tabBarId == "panier" && cartItems.length > 0 && (
@@ -70,7 +70,7 @@ export default function AppTabBarNavigation({ state, descriptors, navigation }) 
                                 )
                             } */}
                         </View>
-                        <CustomText fontFamily="bold" style={{ color: isFocused ? PRIMARY_COLOR : '#222' }}>
+                        <CustomText fontFamily="bold" style={{ color: isFocused ? PRIMARY_COLOR : TEXT_WHITE }}>
                             {label}
                         </CustomText>
                     </Ripple>

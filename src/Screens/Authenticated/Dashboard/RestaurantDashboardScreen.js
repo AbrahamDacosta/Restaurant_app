@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { CustomText, SmallText, RegularText } from '../../../Components/Globals/Texts';
-import { PRIMARY_COLOR, LIGHT_DARK, DEFAULT_BORDER_COLOR, ORANGE_COLOR } from '../../../Theme/Theme';
+import { PRIMARY_COLOR, LIGHT_DARK, DEFAULT_BORDER_COLOR, ORANGE_COLOR, BACKGROUND_DARK, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import { FontSizes, moderateScale } from '../../../Utils/Helpers/ResponsiveHelper';
 import Daos from '../../../Daos';
 import { useSelector } from 'react-redux';
@@ -162,8 +162,8 @@ export default function RestaurantDashboardScreen({ navigation }) {
 
       {item.customer_name && (
         <View style={styles.customerInfo}>
-          <Feather name="user" size={14} color={LIGHT_DARK} />
-          <SmallText style={{ marginLeft: 6, color: LIGHT_DARK }}>
+          <Feather name="user" size={14} color={TEXT_GRAY} />
+          <SmallText style={{ marginLeft: 6, color: TEXT_GRAY }}>
             {item.customer_name}
           </SmallText>
         </View>
@@ -175,7 +175,7 @@ export default function RestaurantDashboardScreen({ navigation }) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={PRIMARY_COLOR} />
-        <CustomText style={{ marginTop: 16 }}>Chargement...</CustomText>
+        <CustomText style={{ marginTop: 16, color: TEXT_WHITE }}>Chargement...</CustomText>
       </View>
     );
   }
@@ -299,34 +299,35 @@ export default function RestaurantDashboardScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: BACKGROUND_DARK,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: BACKGROUND_DARK,
   },
   headerSection: {
-    backgroundColor: 'white',
+    backgroundColor: CARD_BACKGROUND,
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: DEFAULT_BORDER_COLOR,
+    borderBottomColor: 'rgba(255, 127, 0, 0.1)',
   },
   headerTitle: {
     fontSize: FontSizes.large,
     marginBottom: 4,
+    color: TEXT_WHITE,
   },
   headerSubtitle: {
-    color: LIGHT_DARK,
-    opacity: 0.6,
+    color: TEXT_GRAY,
+    opacity: 0.8,
   },
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 24,
     paddingHorizontal: 16,
-    backgroundColor: 'white',
+    backgroundColor: CARD_BACKGROUND,
     marginTop: 8,
   },
   statCard: {
@@ -350,15 +351,17 @@ const styles = StyleSheet.create({
     fontSize: FontSizes.small,
     textAlign: 'center',
     maxWidth: 120,
+    color: TEXT_WHITE,
   },
   breakdownContainer: {
-    backgroundColor: 'white',
+    backgroundColor: CARD_BACKGROUND,
     padding: 16,
     marginTop: 8,
   },
   sectionTitle: {
     fontSize: FontSizes.medium,
     marginBottom: 12,
+    color: TEXT_WHITE,
   },
   breakdownRow: {
     flexDirection: 'row',
@@ -371,20 +374,21 @@ const styles = StyleSheet.create({
   breakdownValue: {
     marginTop: 4,
     fontSize: FontSizes.regular,
+    color: TEXT_WHITE,
   },
   reviewsSection: {
     marginTop: 8,
-    backgroundColor: 'white',
+    backgroundColor: CARD_BACKGROUND,
     padding: 16,
     minHeight: 200,
   },
   reviewCard: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'rgba(255, 127, 0, 0.05)',
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: DEFAULT_BORDER_COLOR,
+    borderColor: 'rgba(255, 127, 0, 0.1)',
   },
   reviewHeader: {
     flexDirection: 'row',
@@ -398,8 +402,8 @@ const styles = StyleSheet.create({
   },
   reviewDate: {
     marginTop: 2,
-    color: LIGHT_DARK,
-    opacity: 0.6,
+    color: TEXT_GRAY,
+    opacity: 0.8,
   },
   ratingBadge: {
     backgroundColor: ORANGE_COLOR,
@@ -418,16 +422,16 @@ const styles = StyleSheet.create({
     marginTop: 8,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: DEFAULT_BORDER_COLOR,
+    borderTopColor: 'rgba(255, 127, 0, 0.1)',
   },
   commentText: {
     lineHeight: 20,
-    color: LIGHT_DARK,
+    color: TEXT_WHITE,
   },
   noCommentText: {
     fontStyle: 'italic',
-    color: LIGHT_DARK,
-    opacity: 0.5,
+    color: TEXT_GRAY,
+    opacity: 0.7,
     marginTop: 8,
   },
   customerInfo: {
@@ -436,7 +440,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: DEFAULT_BORDER_COLOR,
+    borderTopColor: 'rgba(255, 127, 0, 0.1)',
   },
   emptyContainer: {
     alignItems: 'center',
@@ -445,8 +449,8 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     marginTop: 16,
-    color: LIGHT_DARK,
-    opacity: 0.5,
+    color: TEXT_GRAY,
+    opacity: 0.7,
   },
   loadingMoreContainer: {
     paddingVertical: 16,

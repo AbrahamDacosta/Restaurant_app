@@ -86,7 +86,7 @@ export default function AuthenticatedNavigation() {
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
+      <StatusBar backgroundColor={PRIMARY_COLOR} barStyle={'light-content'} />
 
       <Stack.Navigator>
         <Stack.Screen
