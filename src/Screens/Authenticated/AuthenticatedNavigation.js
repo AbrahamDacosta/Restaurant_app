@@ -23,6 +23,7 @@ import { firebase } from '@react-native-firebase/messaging';
 import SoundNotificationPlayer from '../../Utils/Helpers/SoundNotificationPlayer';
 import notifee, { AndroidColor, AndroidImportance } from '@notifee/react-native';
 import ProductsScreen from './Products/ProductsScreen';
+import RestaurantDashboardScreen from './Dashboard/RestaurantDashboardScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -166,13 +167,27 @@ function AppTabNavigator() {
 
       <Tab.Screen
         options={{
+          headerStyle: { backgroundColor: PRIMARY_COLOR, },
+          headerTintColor: "white",
+          headerShown: true,
+          title: "Tableau de bord",
+          tabBarLabel: 'Dashboard',
+          tabBarIcon: function () {
+            return <Feather name="bar-chart-2" />;
+          },
+        }}
+        name="Dashboard"
+        component={RestaurantDashboardScreen}
+      />
+      <Tab.Screen
+        options={{
           headerStyle: { backgroundColor: PRIMARY_COLOR_DARK, },
           headerTintColor: "white",
           headerShown: true,
           title: "Mes commandes",
-          tabBarLabel: 'Mes commandes',
+          tabBarLabel: 'Commandes',
           tabBarIcon: function () {
-            return <Feather name="home" />;
+            return <Feather name="shopping-bag" />;
           },
         }}
         name="Commandes"
