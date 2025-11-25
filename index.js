@@ -16,38 +16,56 @@ import 'moment/locale/fr'  // without this line it didn't work
 
 moment.locale('fr')
 
-import notifee, { AndroidColor, AndroidImportance } from '@notifee/react-native';
+import notifee, { AndroidColor, AndroidImportance, EventType } from '@notifee/react-native';
 
 // ReactNativeForegroundService.register();
 
+// Créer le canal de notification avec le son personnalisé
+async function createNotificationChannel() {
+  await notifee.createChannel({
+    id: 'order-notifications',
+    name: 'Nouvelles Commandes',
+    sound: 'samsung_galaxy',
+    importance: AndroidImportance.HIGH,
+    vibration: true,
+    vibrationPattern: [300, 500],
+  });
+}
+
+// Initialiser le canal au démarrage
+createNotificationChannel();
+
 async function onMessageReceived(message) {
 
-  console.log("message received", message.data);
+  console.log("message received in background/closed state", message.data);
 
   const userToken = store.getState().ApplicationStore?.token;
 
   if (userToken != null) {
 
-    if (message.data.type == "new-order-store") {
-      print("...New store order");
-      SoundNotificationPlayer.playAlarmSong();
-    } else {
-      SoundNotificationPlayer.playAlarmSong(1);
-      setTimeout(() => {
-        SoundNotificationPlayer.stopAlarmSong();
-      }, 1500)
-    }
-    
+    // Créer le titre et le corps de la notification
+    const title = message.notification?.title || message.data?.title || 'Nouvelle commande';
+    const body = message.notification?.body || message.data?.body || 'Vous avez reçu une nouvelle commande';
+
+    // Afficher une notification avec le son
+    // La notification jouera automatiquement le son via le système Android
+    await notifee.displayNotification({
+      title: title,
+      body: body,
+      android: {
+        channelId: 'order-notifications',
+        importance: AndroidImportance.HIGH,
+        sound: 'samsung_galaxy',
+        pressAction: {
+          id: 'default',
+          launchActivity: 'default',
+        },
+        vibrationPattern: [300, 500],
+      },
+    });
+
+    console.log("Notification displayed with sound");
   }
-  // if (type === 'order_shipped') {
-  //   notifee.displayNotification({
-  //     title: 'Your order has been shipped',
-  //     body: `Your order was shipped at ${new Date(Number(timestamp)).toString()}!`,
-  //     android: {
-  //       channelId: 'orders',
-  //     },
-  //   });
-  // }
 }
 
 messaging().setBackgroundMessageHandler(onMessageReceived);
