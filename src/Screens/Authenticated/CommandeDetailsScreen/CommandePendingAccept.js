@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Alert, Modal, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomText } from '../../../Components/Globals/Texts';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
+import ContactsSection from '../../../Components/Commandes/ContactsSection';
 import { ORANGE_COLOR, PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation, useQuery } from 'react-query';
@@ -84,6 +85,9 @@ export default function CommandePendingAccept({ reloadCommandeDetailPage, comman
                 }} />
             } style={{ flex: 1, }}>
                 <CommandeContentList commandeDetails={commande} hasBeenUpdated={commande.old_order_amount != null && parseInt(commande.old_order_amount) != 0} items={commande.items} oldItems={commande.old_items} />
+
+                {/* Contacts Section */}
+                <ContactsSection commande={commande} />
 
             </ScrollView>
 

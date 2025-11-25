@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Alert, Modal, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomText } from '../../../Components/Globals/Texts';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
+import ContactsSection from '../../../Components/Commandes/ContactsSection';
 import { ORANGE_COLOR, PRIMARY_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
 import { useMutation, useQuery } from 'react-query';
@@ -21,6 +22,9 @@ export default function SimpleCommandeResume({ reloadCommandeDetailPage, command
                 }} />
             } style={{ flex: 1, }}>
                 <CommandeContentList commandeDetails={commande} items={commande.items} />
+
+                {/* Contacts Section */}
+                <ContactsSection commande={commande} />
 
             </ScrollView>
             <View style={{ backgroundColor: CARD_BACKGROUND, padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
