@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
 import CommandeContentList from '../../../Components/Commandes/CommandeContentList';
+import ContactsSection from '../../../Components/Commandes/ContactsSection';
 import { CustomText } from '../../../Components/Globals/Texts';
 import { ORANGE_COLOR, CARD_BACKGROUND, TEXT_WHITE, TEXT_GRAY } from '../../../Theme/Theme';
 import ConfirmationModal from '../../../Components/Modals/ConfirmartionModal';
@@ -34,6 +35,10 @@ export default function CommandePendingAffectationLivreur({commande, reloadComma
                 <View style={{flex: 1}}>
 
                 <CommandeContentList commandeDetails={commande} items={commande.items} />
+
+                {/* Contacts Section */}
+                <ContactsSection commande={commande} />
+
                 <View style={{ backgroundColor: CARD_BACKGROUND, padding: 12, paddingVertical: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Montant total</CustomText>
                     <CustomText fontFamily="bold" style={{ color: ORANGE_COLOR }}>25.000 FR</CustomText>

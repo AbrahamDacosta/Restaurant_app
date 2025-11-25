@@ -1,6 +1,7 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, Touchable, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Touchable, TouchableOpacity, View, ScrollView } from 'react-native';
 import { CustomText } from '../../../Components/Globals/Texts';
+import ContactsSection from '../../../Components/Commandes/ContactsSection';
 import MapView, { Marker } from 'react-native-maps';
 import Timeline from 'react-native-timeline-flatlist'
 import moment from 'moment';
@@ -158,7 +159,7 @@ export default function CommandePendingLivraison({ commande }) {
             {/* </View> */}
 
 
-            <View style={{ flex: 1, backgroundColor: CARD_BACKGROUND, padding: 18 }}>
+            <ScrollView style={{ flex: 1, backgroundColor: CARD_BACKGROUND, padding: 18 }}>
 
                 {
                     commande.etat == "3" && (
@@ -183,6 +184,8 @@ export default function CommandePendingLivraison({ commande }) {
                     </TouchableOpacity>
                 </View>
 
+                {/* Contacts Section */}
+                <ContactsSection commande={commande} />
 
                 <Timeline
                     renderDetail={(data) => {
@@ -200,7 +203,7 @@ export default function CommandePendingLivraison({ commande }) {
                     data={timelineData}
                 />
 
-            </View>
+            </ScrollView>
 
 
         </View >
