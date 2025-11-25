@@ -100,6 +100,18 @@ export default function CommandeTabScreen() {
             return firebase.messaging().onMessage(
                 (message) => {
                     console.log("newMessage===>", message);
+
+                    // Play notification sound based on message type
+                    if (message.data?.type == "new-order-store") {
+                        console.log("...New store order - Playing sound");
+                        SoundNotificationPlayer.playAlarmSong();
+                    } else {
+                        SoundNotificationPlayer.playAlarmSong(1);
+                        setTimeout(() => {
+                            SoundNotificationPlayer.stopAlarmSong();
+                        }, 1500)
+                    }
+
                     tabsDatas.loadCommandes("nouveau", 1, store.id)
                     tabsDatas.loadCommandes("enTraitement", 1, store.id)
                     tabsDatas.loadCommandes("envoyes", 1, store.id, commandesFilterStore.startDate, commandesFilterStore.endDate)
