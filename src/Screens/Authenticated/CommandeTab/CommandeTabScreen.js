@@ -98,8 +98,8 @@ export default function CommandeTabScreen() {
     React.useEffect(
         () => {
             return firebase.messaging().onMessage(
-                (message) => {
-                    console.log("newMessage===>", message);
+                async (message) => {
+                    console.log("newMessage===> (foreground)", message);
 
                     // Play notification sound based on message type
                     if (message.data?.type == "new-order-store") {
@@ -111,6 +111,25 @@ export default function CommandeTabScreen() {
                             SoundNotificationPlayer.stopAlarmSong();
                         }, 1500)
                     }
+
+                    // Afficher également une notification même en foreground pour plus de visibilité
+                    const notifee = require('@notifee/react-native').default;
+                    const title = message.notification?.title || message.data?.title || 'Nouvelle commande';
+                    const body = message.notification?.body || message.data?.body || 'Vous avez reçu une nouvelle commande';
+
+                    await notifee.displayNotification({
+                        title: title,
+                        body: body,
+                        android: {
+                            channelId: 'order-notifications',
+                            importance: 4, // HIGH
+                            sound: 'samsung_galaxy',
+                            pressAction: {
+                                id: 'default',
+                                launchActivity: 'default',
+                            },
+                        },
+                    });
 
                     tabsDatas.loadCommandes("nouveau", 1, store.id)
                     tabsDatas.loadCommandes("enTraitement", 1, store.id)

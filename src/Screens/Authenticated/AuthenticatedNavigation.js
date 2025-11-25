@@ -67,11 +67,12 @@ export default function AuthenticatedNavigation() {
   React.useEffect(
     () => {
       return firebase.messaging().onMessage(
-        (message) => {
-          console.log("newMessage===>", message);
+        async (message) => {
+          console.log("newMessage===> (foreground in AuthenticatedNavigation)", message);
+
+          // Play notification sound based on message type
           if (message.data.type == "new-order-store")
             SoundNotificationPlayer.playAlarmSong();
-
           else {
             SoundNotificationPlayer.playAlarmSong(1);
             setTimeout(() => {
@@ -79,6 +80,24 @@ export default function AuthenticatedNavigation() {
             }, 1500)
           }
 
+          // Afficher également une notification même en foreground
+          const notifee = require('@notifee/react-native').default;
+          const title = message.notification?.title || message.data?.title || 'Nouvelle commande';
+          const body = message.notification?.body || message.data?.body || 'Vous avez reçu une nouvelle commande';
+
+          await notifee.displayNotification({
+            title: title,
+            body: body,
+            android: {
+              channelId: 'order-notifications',
+              importance: 4, // HIGH
+              sound: 'samsung_galaxy',
+              pressAction: {
+                id: 'default',
+                launchActivity: 'default',
+              },
+            },
+          });
         }
       )
     }, []
