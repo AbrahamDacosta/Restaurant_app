@@ -437,11 +437,11 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                 </CustomText>
             </View>
 
-            <View style={{ paddingHorizontal: 16, flexDirection: 'row', }}>
+            <View style={{ marginHorizontal: 16, marginVertical: 8, backgroundColor: PRIMARY_COLOR, borderRadius: 8, padding: 16, flexDirection: 'row', }}>
                 <TouchableOpacity onPress={() => {
                     setPickerMode('date-start')
                 }} style={{ flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Du</CustomText>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>Du</CustomText>
                     <CustomText fontFamily={pickerMode == "date-start" ? "bold" : undefined} style={{ fontSize: moderateScale(24), color: TEXT_WHITE }}>
                         {
                             !!startDate ? moment(startDate).format("DD/MM/YYYY") : "-"
@@ -451,7 +451,7 @@ function CommandeDateRangePicker({ isVisible, onClose }) {
                 <TouchableOpacity onPress={() => {
                     setPickerMode('date-end')
                 }} style={{ flex: 1 }}>
-                    <CustomText fontFamily="bold" style={{ color: TEXT_GRAY }}>Au</CustomText>
+                    <CustomText fontFamily="bold" style={{ color: TEXT_WHITE }}>Au</CustomText>
                     <CustomText fontFamily={pickerMode == "date-end" ? "bold" : undefined} style={{ fontSize: moderateScale(24), color: TEXT_WHITE }}>
                         {
                             !!endDate ? moment(endDate).format("DD/MM/YYYY") : "-"
